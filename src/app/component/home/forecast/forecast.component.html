@@ -1,0 +1,266 @@
+<div id="weather" style="min-width: 1300px;">
+  <div class="article" style="position: relative;">
+    <div class="top">
+      <div class="form-group" style="padding-left: 40px;">
+        <label id="title">电量预测</label>
+        <select class="form-control " style="display: inline-block;margin-left: 60px;width: 200px;margin-top: 4px;border-radius: 8px;">
+          <option>无锡广盈实业有限公司</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="left" style="min-width: 490px;">
+
+        <div class="data2" style="position: relative" >
+          <div class="select" style="position: absolute;right: 0;top: 0;z-index:9999;">
+             <span>
+                 <select class="form-control pull-left" title="" id="" style="width: 120px;">
+                    <option value="">辐照度</option>
+                </select>
+            </span>
+            <span>
+               <select class="form-control pull-left" id="selcd" title="" style="width: 90px">
+                  <option value="">24小时</option>
+              </select>
+            </span>
+          </div>
+          <div id="od5" echarts [options]="option" class="chart">
+
+          </div>
+        </div>
+
+        <div class="data1">
+          <div class="box" style="border-top: 0">
+            <div class="p1">
+              <div>
+                <span class="gn cc">0.005</span>
+                <span class="green bac">Mj/m<sup>2</sup></span>
+                <span class="bk">
+                         <img src="../../../../assets/img/rel.png" alt=""> 热量
+                     </span>
+              </div>
+              <div>
+                <span class="bl cc">568</span>
+                <span class="blue bac">W/m<sup>2</sup></span>
+                <span class="bk">
+                     <img src="../../../../assets/img/fus.png" alt=""> 辐射
+                 </span>
+              </div>
+              <div>
+                <span class="og cc">568</span>
+                <span class="orange bac">min</span>
+                <span class="bk">
+                 <img src="../../../../assets/img/riz.png" alt=""> 日照
+             </span>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="p1">
+              <div>
+                <span class="gn cc">1.023</span>
+                <span class="gn bac">MJ/m<sup>2</sup></span>
+                <span class="bk">总辐射</span>
+              </div>
+              <div>
+                <span class="bl cc">0.005</span>
+                <span class="bl bac">MJ/m<sup>2</sup></span>
+                <span class="bk">直辐射</span>
+              </div>
+              <div>
+                <span class="og cc">0.005</span>
+                <span class="og bac">MJ/m<sup>2</sup></span>
+                <span class="bk"> 散辐射</span>
+              </div>
+            </div>
+            <div class="p1">
+              <div>
+                <span class="gn cc">892</span>
+                <span class="gn bac">W/m<sup>2</sup></span>
+                <span class="bk">总热量
+            </span>
+              </div>
+              <div>
+                <span class="bl cc">568</span>
+                <span class="bl bac">W/m<sup>2</sup></span>
+                <span class="bk">热量
+            </span>
+              </div>
+              <div>
+                <span class="og cc">568</span>
+                <span class="og bac">W/m<sup>2</sup></span>
+                <span class="bk">散热
+            </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <div class="p1">
+              <div>
+        <span class="arc"  style="background: url(../../../../assets/img/u841.png)">
+
+        </span>
+                <span class="max">59.5%</span><br>
+                <span class="min">湿度</span>
+              </div>
+              <div>
+        <span class="arc" style="background: url(../../../../assets/img/u843.png);">
+
+        </span>
+                <span class="max">270<sup>。</sup></span><br>
+                <span class="min">风向</span>
+              </div>
+              <div>
+        <span class="arc" style="background: url(../../../../assets/img/u845.png);">
+
+        </span>
+                <span class="max">26.5<sup>。</sup>C</span><br>
+                <span class="min">温度</span>
+              </div>
+              <div>
+        <span class="arc" style="background: url(../../../../assets/img/u863.png);">
+
+        </span>
+                <span class="max">1013.5hPa</span><br>
+                <span class="min">气压</span>
+              </div>
+            </div>
+            <div>
+              <span>环境温度<span class="gn">59.6%</span></span>
+              <span>组件温度<span class="bl">26.5<sup>。</sup>C</span></span>
+              <span>风速瞬时<span class="bl">2.3M/s</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right" style="max-width: calc(100% - 496px);min-height: 660px;">
+        <div class="time"style="margin: 20px ;">
+        <div class="select" id="search_sp" style="display: inline-block">
+            <span>
+                <select class="form-control " style="width: 100px;" name="" id="s">
+                    <option value="">热点</option>
+                </select>
+            </span>
+        </div>
+          <span>
+            <p-calendar [(ngModel)]="startdate" [showIcon]="true" [placeholder]="'开始日期'"  dateFormat="yy-mm-dd" [maxDate]="enddate"  [locale]="ch" [readonlyInput]="true"   ></p-calendar>
+          </span>
+          <span style="margin-left: 50px;width:24%;margin-right: 20px;">
+            <p-calendar [(ngModel)]="enddate" [showIcon]="true" [placeholder]="'结束日期'" [minDate]="startdate"  dateFormat="yy-mm-dd" [locale]="ch" [readonlyInput]="true"></p-calendar>
+          </span>
+          <button pButton type="button" icon="fa-search" iconPos="left"></button>
+          <button class="pull-right" style="margin-top: 5px" pButton type="button" icon="fa-external-link" iconPos="left" title="导出"></button>
+
+        </div>
+
+        <div class="data3">
+          <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
+                 aria-describedby="example1_info">
+            <thead>
+            <tr role="row">
+              <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                  aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
+                  style="width: 197px;">序号
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                  aria-label="Browser: activate to sort column ascending" style="width: 242px;">总辐射Mj/m<sup>2</sup></th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                  aria-label="Platform(s): activate to sort column ascending" style="width: 216px;">总热量W/m<sup>2</sup>
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                  aria-label="Engine version: activate to sort column ascending" style="width: 169px;">温度<sup>。</sup>C
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                  aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">环境温度<sup>。</sup>C
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                  aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">组件温度<sup>。</sup>C
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                  aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">环境湿度%
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                  aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">气压hpa
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                  aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">风速m/s
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                  aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">风向<sup>。</sup></th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                  aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">电压V
+              </th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                  aria-label="CSS grade: activate to sort column ascending" style="width: 123px;">
+                <div style="min-width: 89px">上报时间</div>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr role="row" class="odd">
+              <td class="sorting_1">1</td>
+              <td>1.023</td>
+              <td>892</td>
+              <td>452</td>
+              <td>26.6</td>
+              <td>12.5</td>
+              <td>59.6</td>
+              <td>1001.1</td>
+              <td>2.3</td>
+              <td>270</td>
+              <td>13.5</td>
+              <td>2018-11-12 11:40</td>
+            </tr>
+            <tr role="row" class="odd">
+              <td class="sorting_1">2</td>
+              <td>1.023</td>
+              <td>892</td>
+              <td>452</td>
+              <td>26.6</td>
+              <td>12.5</td>
+              <td>59.6</td>
+              <td>1001.1</td>
+              <td>2.3</td>
+              <td>270</td>
+              <td>13.5</td>
+              <td>2018-11-12 11:40</td>
+            </tr>
+            <tr role="row" class="odd">
+              <td class="sorting_1">3</td>
+              <td>1.023</td>
+              <td>892</td>
+              <td>452</td>
+              <td>26.6</td>
+              <td>12.5</td>
+              <td>59.6</td>
+              <td>1001.1</td>
+              <td>2.3</td>
+              <td>270</td>
+              <td>13.5</td>
+              <td>2018-11-12 11:40</td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="dataTables_paginate paging_simple_numbers pull-right" id="example1_paginate">
+            <ul class="pagination">
+              <li class="paginate_button previous disabled" id="example1_previous"><a href="#" aria-controls="example1"
+                                                                                      data-dt-idx="0" tabindex="0">Previous</a>
+              </li>
+              <li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a>
+              </li>
+              <li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a></li>
+              <li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a></li>
+              <li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a></li>
+              <li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a></li>
+              <li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a></li>
+              <li class="paginate_button next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7"
+                                                                     tabindex="0">Next</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
