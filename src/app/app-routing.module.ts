@@ -13,6 +13,9 @@ import {DatadisplayComponent} from './component/home/datadisplay/datadisplay.com
 import {SettingComponent} from './component/home/setting/setting.component';
 import {StationComponent} from './component/home/setting/station/station.component';
 import { EquipmentComponent } from './component/home/setting/equipment/equipment.component';
+import { UserComponent } from './component/home/setting/user/user.component';
+import { RoleComponent } from './component/home/setting/role/role.component';
+import { AreaComponent } from './component/home/setting/area/area.component';
 
 const routes: Routes = [
 //	{path:'',redirectTo:'/login',pathMatch:'full'},equipment
@@ -31,7 +34,10 @@ const routes: Routes = [
       {path:'setting',component:SettingComponent,children:[
       	{path:'',redirectTo:'/home/setting/station',pathMatch:'full'},
       	{path:'station',component:StationComponent},
-      	{path:'equipment',component:EquipmentComponent}
+      	{path:'equipment',component:EquipmentComponent},
+      	{path:'user',component:UserComponent},
+      	{path:'role',component:RoleComponent},
+      	{path:'area',component:AreaComponent},
       ]}
     ]}
 ];

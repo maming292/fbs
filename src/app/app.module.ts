@@ -30,6 +30,9 @@ import { DatadisplayComponent } from './component/home/datadisplay/datadisplay.c
 import { SettingComponent } from './component/home/setting/setting.component';
 import { StationComponent } from './component/home/setting/station/station.component';
 import { EquipmentComponent } from './component/home/setting/equipment/equipment.component';
+import { UserComponent } from './component/home/setting/user/user.component';
+import { RoleComponent } from './component/home/setting/role/role.component';
+import { AreaComponent } from './component/home/setting/area/area.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { EquipmentComponent } from './component/home/setting/equipment/equipment
     DatadisplayComponent,
     SettingComponent,
     StationComponent,
-    EquipmentComponent
+    EquipmentComponent,
+    UserComponent,
+    RoleComponent,
+    AreaComponent
   ],
   imports: [
     BrowserModule,

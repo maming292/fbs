@@ -1,0 +1,129 @@
+li{
+	list-style-type: none;
+}
+.station{
+	padding:20px 30px 0 130px;
+	background: #F8F8F8;height: 100%;
+}
+.header{
+	padding-bottom: 30px;
+	font-size: 14px;
+	color: #333333;
+}
+.selects{
+	height: 75px;
+}
+.selects select{
+	width: 120px;
+	border: 1px solid #CCCCCC;
+	outline: none;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 5px;
+	background: none;
+	margin-right: 20px;
+	vertical-align: middle;
+}
+.selects input{
+	width: 200px;
+	border: 1px solid #CCCCCC;
+	outline: none;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 5px;
+	background: none;
+	margin-right: 20px;
+	padding: 0 10px;
+	vertical-align: middle;
+}
+.sea{
+	vertical-align: middle;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+}
+.fr{
+	float: right;
+}
+.add{
+	display: inline-block;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 5px;
+	background: #1DBC9B;
+	text-align: center;
+	color: #FFFFFF;
+	margin-right: 20px;
+}
+.out{
+	display: inline-block;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 5px;
+	border: 1px solid #1DBC9B;
+	text-align: center;
+	color: #FFFFFF;
+}
+.out span{
+	color: #1DBC9B;
+}
+
+.out img,.add img{
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+.stationList{
+	width: 100%;
+}
+.tableHead{
+	width: 100%;
+}
+.tableHead td{
+	text-align: center;
+}
+table{
+	background: #FFF;
+	border: 1px solid #ddd;
+}
+
+.tableHead thead td div a{
+	display: inline-block;
+	width: 50%;
+	color: #666666;
+}
+.tableHead tbody td{
+	height: 50px;
+}
+
+.tableHead tbody td a{
+	display: inline-block;
+	width: 50%;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

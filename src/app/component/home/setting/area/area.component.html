@@ -1,6 +1,6 @@
 <div class="station">
 	<div class="header">
-		<span>系统设置&nbsp;&gt;&nbsp;站点管理</span>
+		<span>系统设置&nbsp;&gt;&nbsp;角色管理</span>
 	</div>
 	<div class="selects">
 		<select name="" id="area">
@@ -13,13 +13,17 @@
 			<option value="-1">梁溪区</option>
 			<option value="-1">滨湖区</option>
 		</select>
-		<input type="text" name="stationName" id="stationName" value="" placeholder="站点名称" />
+		<select name="" id="kind">
+			<option value="-1">所在区域</option>
+			<option value="-1">梁溪区</option>
+			<option value="-1">滨湖区</option>
+		</select>
 		<a class="sea">
 			<img src="../../../../../assets/img/search_b.png" />
 		</a>
 
 		<div class="fr">
-			<a class="add">
+			<a class="add" (click)='shows()'>
 				<img src="../../../../../assets/img/adds.png" />
 				<span>新增</span>
 			</a>
@@ -35,20 +39,12 @@
 				<thead>
 					<tr>
 						<td>序号</td>
-						<td>站点名称</td>
-						<td>电站类型</td>
-						<td>建设类型</td>
-						<td>建设规模</td>
-						<td>所属区域</td>
-						<td>投资回报率</td>
-						<td>成本节约/年</td>
-						<td>经度</td>
-						<td>纬度</td>
-						<td>站点图片</td>
+						<td>角色名称</td>
+						<td>描述</td>
 						<td>
 							<div>操作</div>
 							<div>
-								<a>编辑</a><a>删除</a>
+								<a>权限</a><a>编辑</a><a>删除</a>
 							</div>
 						</td>
 					</tr>
@@ -57,13 +53,31 @@
 					<tr *ngFor='let items of msglist;let i = index;'>
 							<td>{{i}}</td>
 							<td *ngFor='let item of items;let i = index;'>{{item}}</td>
-							<td>查看</td>
-							<td><a><img src="../../../../../assets/img/sc.png" /></a><a><img src="../../../../../assets/img/bj.png" /></a></td>
+							<td><a><img src="../../../../../assets/img/qx.png" /></a><a><img src="../../../../../assets/img/sc.png" /></a><a><img src="../../../../../assets/img/bj.png" /></a></td>
 					</tr>
 				</tbody>
 			</table>
 			<div id="page-container-static-normal"></div>
 		</div>
-
+	</div>
+	
+	
+	<div class="alerts" *ngIf='alertshow'>
+		<span class="middles"></span>
+		<div id="win">
+			<div class="alerttitle">
+				<span>设置角色</span><i (click)='hiddens()' class="glyphicon glyphicon-remove"></i>
+			</div>
+			<div class="put">
+				<span>角色名称</span><input type="text" placeholder="填写角色名称"/>
+			</div>
+			<div class="put">
+				<span>角色描述</span><input type="text" placeholder="填写角色描述"/>
+			</div>
+			
+			<div class="myBtn">
+				<a (click)='hiddens()'>取消</a><a>确定</a>
+			</div>
+		</div>
 	</div>
 </div>
