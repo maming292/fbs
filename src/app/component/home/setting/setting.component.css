@@ -4,7 +4,7 @@
 }
 
 #setting .setMenu {
-	position: fixed;
+	position: absolute;
 	bottom: 0;
 	top: 50px;
 	left: 0;

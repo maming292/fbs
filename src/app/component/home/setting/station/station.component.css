@@ -77,6 +77,9 @@ li{
 
 .stationList{
 	width: 100%;
+	height: 535px;
+	border: 1px solid #ddd;
+	position: relative;
 }
 .tableHead{
 	width: 100%;
@@ -86,30 +89,46 @@ li{
 }
 table{
 	background: #FFF;
-	border: 1px solid #ddd;
 }
 
 .tableHead thead td div a{
 	display: inline-block;
-	width: 50%;
+	width: 48%;
 	color: #666666;
 }
 .tableHead tbody td{
-	height: 50px;
+	height: 40px;
 }
 
 .tableHead tbody td a{
 	display: inline-block;
-	width: 50%;
+	width: 48%;
 	text-align: center;
 }
 
 
 
+/* 分页 */
+.page{
+	text-align: right;
+	padding: 30px 60px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	
+}
+.page ul{
+	display: inline-flex;	
+	width: 400px;
+	justify-content: space-between;
+}
 
-
-
-
+.page ul li select{
+	width: 50px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
 
 
 

@@ -48,22 +48,50 @@
 						<td>
 							<div>操作</div>
 							<div>
-								<a>编辑</a><a>删除</a>
+								<a>编辑</a>
+								<a>删除</a>
 							</div>
 						</td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr *ngFor='let items of msglist;let i = index;'>
-							<td>{{i}}</td>
+						<ng-container *ngIf='i>=(page-1)*10&&i<page*10'>
+							<td>{{i+1}}</td>
 							<td *ngFor='let item of items;let i = index;'>{{item}}</td>
 							<td>查看</td>
-							<td><a><img src="../../../../../assets/img/sc.png" /></a><a><img src="../../../../../assets/img/bj.png" /></a></td>
+							<td>
+								<a><img src="../../../../../assets/img/sc.png" /></a>
+								<a><img src="../../../../../assets/img/bj.png" /></a>
+							</td>
+						</ng-container>
 					</tr>
 				</tbody>
 			</table>
-			<div id="page-container-static-normal"></div>
 		</div>
-
+		<div class="page">
+			<ul>
+				<li (click)='first()'>
+					<a><img src="../../../../../assets/img/pgbegin.png" /></a>
+				</li>
+				<li (click)='prev()'>
+					<a><img src="../../../../../assets/img/pgprev.png" /></a>
+				</li>
+				<li>
+					<select name="" [(ngModel)]='page'>
+						<ng-container *ngFor='let p of pageArr; let s = index'>
+							<option [value]="p">{{p}}</option>
+						</ng-container>
+					</select>
+				</li>
+				<li (click)='next()'>
+					<a><img src="../../../../../assets/img/pgnext.png" /></a>
+				</li>
+				<li (click)='last()'>
+					<a><img src="../../../../../assets/img/pgend.png" /></a>
+				</li>
+				<li><span>共{{msglist.length}}条记录，当前页面{{page}}/{{maxPage}}页</span></li>
+			</ul>
+		</div>
 	</div>
 </div>
