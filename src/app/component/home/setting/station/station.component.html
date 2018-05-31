@@ -19,7 +19,7 @@
 		</a>
 
 		<div class="fr">
-			<a class="add">
+			<a class="add" (click)='shows()'>
 				<img src="../../../../../assets/img/adds.png" />
 				<span>新增</span>
 			</a>
@@ -92,6 +92,67 @@
 				</li>
 				<li><span>共{{msglist.length}}条记录，当前页面{{page}}/{{maxPage}}页</span></li>
 			</ul>
+		</div>
+	</div>
+	
+	
+	
+	
+	<div class="alerts" *ngIf='alertshow'>
+		<span class="middles"></span>
+		<div id="win">
+			<div class="alerttitle">
+				<span>新增站点信息</span><i (click)='hiddens()' class="glyphicon glyphicon-remove"></i>
+			</div>
+			<div class="put">
+				<span>站点名称</span><input type="text" placeholder="填写用户名称"/>
+			</div>
+			<div class="put">
+				<p><span>电站类型</span>
+					<select name="">
+						<option value="-1">请选择</option>
+					</select>
+				</p>
+				<p><span>建设类型</span>
+					<select name="">
+						<option value="-1">请选择</option>
+					</select>
+				</p>
+			</div>
+			<div class="put">
+				<p><span>建设规模</span>
+					<input type="text" />
+				</p>
+				<p><span>所属区域</span>
+					<select name="">
+						<option value="-1">请选择</option>
+					</select>
+				</p>
+			</div>
+			<div class="put">
+				<p><span>投资回报率</span>
+					<input type="text" />
+				</p>
+				<p><span>节约成本/年</span>
+					<input type="text" />
+				</p>
+			</div>
+			<div class="put">
+				<p><span>经度</span>
+					<input type="text" />
+				</p>
+				<p><span>纬度</span>
+					<input type="text" />
+				</p>
+			</div>
+			<div class="up">
+				<span>站点图片</span>
+				<div><img src="../../../../../assets/img/up.png"/></div>
+			</div>
+			<div class="notes">备注：电站类型：1.光伏站 2.风能站 3.其他&nbsp;&nbsp;建设类型：1.办公园区 2.工厂 3.住宅</div>
+			<div class="myBtn">
+				<a (click)='hiddens()'>取消</a><a>确定</a>
+			</div>
 		</div>
 	</div>
 </div>

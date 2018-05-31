@@ -108,7 +108,7 @@ table {
 
 .tableHead thead td div a {
 	display: inline-block;
-	width: 33%;
+	width: 31%;
 	color: #666666;
 }
 
@@ -118,7 +118,7 @@ table {
 
 .tableHead tbody td a {
 	display: inline-block;
-	width: 33%;
+	width: 31%;
 	text-align: center;
 }
 
@@ -208,6 +208,10 @@ table {
 
 .myBtn a:last-child{
 	background: #1DBC9B;
+}
+.put>p{
+	display: inline-block;
+	width: 246px
 }
 
 /* 分页 */

@@ -106,8 +106,123 @@ table{
 	text-align: center;
 }
 
+.alerts{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 800;
+	/*margin-right: 440px;*/
+	text-align: center;
+	z-index: 10000;
+	/*display: none;*/
+}
+.middles {
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
 
+#win {
+	position: relative;
+	border-radius: 5px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 580px;
+	background: #F2F2F2;
+	position: relative;
+}
+.alerttitle{
+	margin-bottom: 20px;
+}
+.alerttitle span{
+	display: inline-block;
+	width: 100%;
+	text-align: left;
+	padding: 5px 15px;
+	font-size: 20px;
+	color: #333333;
+	font-weight: 700;
+	height: 50px;
+	line-height: 50px;
+}
+.alerttitle i{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 18px;
+}
+#win .put{
+	width: 100%;
+	margin-bottom: 15px;
+}
+#win .put span{
+	display: inline-block;
+	width: 95px;
+	padding-right: 10px;
+	text-align: right;
+	color: #666;
+}
+#win .put input,#win .put select{
+	display: inline-block;
+	width: 80%;
+	background: #fff;
+	height: 40px;
+	line-height: 40px;
+	outline: none;
+}
+.myBtn{
+	padding: 30px 0;
+}
+.myBtn a{
+	display: inline-block;
+	width: 140px;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	border-radius: 5px;
+}
+.myBtn a:first-child{
+	background: #BAC7CC;
+	margin-right: 40px;
+}
 
+.myBtn a:last-child{
+	background: #1DBC9B;
+}
+.put>p{
+	display: inline-block;
+	width: 287px;
+	text-align: right;
+	padding-right: 15px;
+}
+#win .put>p select,#win .put>p input{
+	display: inline-block;
+	width: 171px;
+}
+.up{
+	text-align: left;
+}
+.up span{
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+	    padding-right: 10px;
+    text-align: right;
+    color: #666
+}
+.up div{
+	display: inline-block;
+}
+.notes{
+	margin-top: 25px;
+	color: #666666;
+	text-align: left;
+	font-size: 12px;
+	padding-left: 20px;
+}
 /* 分页 */
 .page{
 	text-align: right;
