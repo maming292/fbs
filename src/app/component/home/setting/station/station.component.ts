@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
+
 @Component({
 	selector: 'app-station',
 	templateUrl: './station.component.html',
@@ -13,6 +14,10 @@ export class StationComponent implements OnInit {
 	pageArr: any;
 	constructor() {}
 	ngOnInit() {
+		laydate.render({
+			elem: '#d1'
+		});
+
 		this.alertshow = false;
 		this.msglist = [
 			['广盈实业有限公司', '光伏电站', '办公园区', '440KW', '梁溪区', '7年', '10%', 120.34566, 30.12343],
@@ -45,7 +50,7 @@ export class StationComponent implements OnInit {
 		}
 	}
 	first() {
-		
+
 		this.page = 1;
 	}
 	last() {

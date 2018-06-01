@@ -30,7 +30,7 @@ export class AreaComponent implements OnInit {
 			['系统管理员', '描述'],
 			['系统管理员', '描述'],
 			['系统管理员', '描述'],
-			['系统管理员', '描述']
+			['系统管理员', '描述'],
 		];
 		this.maxPage = Math.ceil((this.msglist.length) / 10);
 		this.pageArr = [];
@@ -54,7 +54,7 @@ export class AreaComponent implements OnInit {
 		}
 	}
 	first() {
-
+		
 		this.page = 1;
 	}
 	last() {

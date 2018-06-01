@@ -28,13 +28,17 @@
               "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeng/resources/themes/omega/theme.css",
-              "node_modules/swiper/dist/css/swiper.min.css"
+              "node_modules/swiper/dist/css/swiper.min.css",
+              "src/assets/theme/default/laydate.css"
+//            "src/assets/layer/mobile/need/layer.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/admin-lte/dist/js/adminlte.min.js",
-              "node_modules/echarts/dist/echarts.min.js"
+              "node_modules/echarts/dist/echarts.min.js",
+//            "src/assets/layer/layer.js",
+              "src/assets/laydate.js"
             ]
           },
           "configurations": {
@@ -85,7 +89,8 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/admin-lte/dist/js/adminlte.min.js",
-              "node_modules/echarts/dist/echarts.min.js"
+              "node_modules/echarts/dist/echarts.min.js",
+              "src/assets/js/bootstrap-pager.js"
             ],
             "styles": [
               "src/styles.css",
@@ -95,7 +100,8 @@
               "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeng/resources/themes/omega/theme.css",
-              "node_modules/swiper/dist/css/swiper.min.css"
+              "node_modules/swiper/dist/css/swiper.min.css",
+              "src/assets/css/bootstrap-pager.css"
             ],
             "assets": [
               "src/assets",
