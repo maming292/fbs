@@ -3,37 +3,24 @@
 		<span></span><b>数据质量控制</b>
 	</div>
 	<div class="ecList">
-		<div>
-			<div class="select">
-				<select class="name1">
-					<option value="0">无锡广盈实业有限公司</option>
-					<option value="1">AA广盈实业有限公司</option>
-					<option value="2">BB广盈实业有限公司</option>
-				</select>
-				<select>
-					<option value="">2017年2月</option>
-					<option value="">2017年3月</option>
-					<option value="">2017年4月</option>
-				</select>
-			</div>
-			<div id="main1" class="ec">
-			</div>
+		<div class="select">
+			<select class="name" [(ngModel)]='company_id'>
+				<option value="141">无锡广盈实业有限公司</option>
+			</select>
+			<select [(ngModel)]='time'>
+				<option value="2018-05">2018年05月</option>
+				<option value="2018-06">2018年06月</option>
+			</select>
+			
+			<span>{{company_id}}--{{time}}</span>
 		</div>
-		<div>
-			<div class="select">
-				<select class="name2">
-					<option value="0">无锡广盈实业有限公司</option>
-					<option value="1">AA广盈实业有限公司</option>
-					<option value="2">BB广盈实业有限公司</option>
-				</select>
-				<select>
-					<option value="">2017年5月</option>
-					<option value="">2017年6月</option>
-					<option value="">2017年7月</option>
-				</select>
-			</div>
-			<div id="main2" class="ec">
-			</div>
+		<div class="echartsContent">
+				<div class="btns">
+						<a (click)='lineActive()' class="bar"><img [src]="btnChange[0]" /></a>
+						<a (click)='barActive()' class="line"><img [src]="btnChange[1]" /></a>
+					</div>
+			<!--<div id="main" class="ec"></div>-->
+			<div id="main" class="ec" style="width: 100%;height:600px;position: relative;"></div>
 		</div>
 	</div>
 </div>

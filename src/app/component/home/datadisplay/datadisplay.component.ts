@@ -5,7 +5,7 @@ import swal from 'sweetalert2';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { PublicService } from '../../../services/public.service';
 import * as $ from "jquery";
-declare var echarts:any;
+declare var echarts: any;
 @Component({
 	selector: 'app-datadisplay',
 	templateUrl: './datadisplay.component.html',
@@ -14,82 +14,96 @@ declare var echarts:any;
 export class DatadisplayComponent implements OnInit {
 	ecwidth: any;
 	ydatas: any;
-	ydata1: any;
-	ydata2: any;
-	constructor(private route: Router, private serve: IndexService, private http: HttpClient) {}
+	xData: any;
+	company_id: any;
+	time: any;
+	type: any;
+	ectype: any;
+	numarr: any;
+	myChart: any;
+	ecBtn: any;
+	btnChange: any;
+	num: any;
+	constructor(private route: Router, private serve: IndexService, private http: HttpClient, private service: PublicService) {}
 	ngOnInit() {
-		this.ydatas = [[5, 20, 36, 10, 10, 20, 5, 20, 36, 10],
-					   [50, 12, 38, 5, 7, 22, 15, 90, 63, 100],
-					   [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
-					  ]
-		var ydatas = this.ydatas;
-		this.ydata1 = this.ydatas[0];
-		this.ydata2 = this.ydatas[0];
-		var ydata1 = this.ydata1;
-		var ydata2 = this.ydata2;
-		
-		var setEc1 = this.setEc1;
-		var setEc2 = this.setEc2;
-		$('.name1').on('change',function(){
-			var val1 = $(this).val();
-			ydata1 = ydatas[Number(val1)];
-			setEc1('main1',ydata1);
-		})
-			$('.name2').on('change',function(){
-			var val2 = $(this).val();
-			ydata2 = ydatas[Number(val2)];
-			setEc2('main2',ydata2);
-		})
+		this.myChart = echarts.init(document.getElementById('main'));
+		var numarr = [];
+		this.ecBtn = [['../../../assets/img/la.png','../../../assets/img/bar.png'],['../../../assets/img/l.png','../../../assets/img/bara.png']];
+		this.btnChange = this.ecBtn[0];
+		this.ectype = 'line';
+		this.company_id = 141;
+		this.time = '2018-05';
+		this.xData = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
+		this.num = [0, 0, 0, 0, 0, 52, 87, 52, 546, 5, 9, 4, 12, 457, 110, 211, 77, 44, 88, 99, 66, 33, 22, 55, 88, 33, 88, 77, 12, 98, 15]
+		//		this.getData(this.company_id,this.time);
+//		this.getData();
+		this.setEchars(this.ectype, this.xData, this.num);
+
 		this.ecwidth = $('.ecList').width();
-		$('.ec').height(this.ecwidth * 0.30);
-		this.setEc1('main1',this.ydata1);
-		this.setEc2('main2',this.ydata2);
+		$('.ec').height(this.ecwidth * 0.50);
 	}
 
-	setEc1(id,ydata) {
-		$('#box').removeAttr('_echarts_instance_');
-		var myChart = echarts.init(document.getElementById(id));
-		
+	getData(company_id, time) {
+		console.log(`${this.service.path}/fbs/foreignForC/photovoltaic_chart?company_id=${company_id}&time=${time}`);
+		//		this.http.get(`${this.service.path}/fbs/foreignForC/photovoltaic_chart?company_id=${company_id}&time=${time}`)
+		//			.subscribe(
+		//				function(data) {
+		//					var num = [];
+		//					console.log(data.chart);
+		//					num[0] = data.chart.ONE;
+		//					num[1] = data.chart.TWO;
+		//					num[2] = data.chart.THREE;
+		//					num[3] = data.chart.FOUR;
+		//					num[4] = data.chart.FIVE;
+		//					num[5] = data.chart.SIX;
+		//					num[6] = data.chart.SEVEN;
+		//					num[7] = data.chart.EIGHT;
+		//					num[8] = data.chart.NINE;
+		//					num[9] = data.chart.TEN;
+		//					num[10] = data.chart.ELEVEN;
+		//					num[11] = data.chart.TWELVE;
+		//					num[12] = data.chart.THIRTEEN;
+		//					num[13] = data.chart.FOURTEEN;
+		//					num[14] = data.chart.FIVETEEN;
+		//					num[15] = data.chart.SIXTEEN;
+		//					num[16] = data.chart.SEVENTEEN;
+		//					num[17] = data.chart.EIGHTEEN;
+		//					num[18] = data.chart.NINETEEN;
+		//					num[19] = data.chart.TWENTY;
+		//					num[20] = data.chart.TWENTYONE;
+		//					num[21] = data.chart.TWENTYTWO;
+		//					num[22] = data.chart.TWENTYTHREE;
+		//					num[23] = data.chart.TWENTYFOUR;
+		//					num[24] = data.chart.TWENTYFIVE;
+		//					num[25] = data.chart.TWENTYSIX;
+		//					num[26] = data.chart.TWENTYSEVEN;
+		//					num[27] = data.chart.TWENTYEIGHT;
+		//					num[28] = data.chart.TWENTYNINE;
+		//					num[29] = data.chart.THIRTY;
+		//					num[30] = data.chart.THIRTYONE;
+		////					this.setEchars(this.ectype,this.xData,num);
+		//				}.bind(this),
+		//				function(err) {
+		//					console.log('失败');
+		//				}
+		//			);
+	}
+	setEchars(type,xData, num) {
+			$('#box').removeAttr('_echarts_instance_');
+			var myChart = echarts.init(document.getElementById('main'));
 		var option = {
-			backgroundColor: '#fff',
 			title: {
 				text: '有功功率图表分析',
-				show: true, //标题显示隐藏
-				left: 'center',
-				top: '20',
-				fontSize: '18px',
-				textStyle: { //样式
-					color: '#333',
-					fontWeight: '700',
-					fontSize: 16
-				}
+				left: 'center' // 标题居中
 			},
-			tooltip: {
-				trigger: 'axis'
+			tooltip: {},
+			xAxis: {
+				data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']
 			},
-			xAxis: {//横轴
-				boundaryGap: false,
-				splitLine: { // 网格竖线
-					show: true,
-					lineStyle: {
-						color: '#C9C9C9',
-						width: 1
-					}
-				},
-				data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-			},
-			yAxis: {
-				splitLine: { // 网格竖线
-					show: true,
-					lineStyle: {
-						color: '#C9C9C9',
-						width: 1
-					}
-				}
-			},
+			yAxis: {},
 			series: [{
 				name: '销量',
-				type: 'line',
+				type: type,
 				areaStyle: { //折线以下样式
 					normal: {
 						color: new echarts.graphic.LinearGradient(
@@ -105,83 +119,42 @@ export class DatadisplayComponent implements OnInit {
 						)
 					}
 				},
-				itemStyle: { //折线样式
-					normal: {
-						color: '#39C9B2', //圆圈样式
-						lineStyle: {
-							color: '#39C9B2'
-						}
-					}
-				},
-				data: ydata
-			}]
-		};
-		myChart.setOption(option);
-	}
-
-	setEc2(id,ydata) {
-		var myChart = echarts.init(document.getElementById(id));
-		var option = {
-			title: {
-				text: '有功功率图表分析',
-				show: true, //标题显示隐藏
-				left: 'center',
-				top: '20',
-				textStyle: { //样式
-					color: '#666',
-					fontWeight: '400',
-					fontSize: 16
-				}
-			},
-			tooltip: {
-				trigger: 'axis'
-			},
-			xAxis: {
-//				boundaryGap: false,
-				splitLine: {
-					show: true,
-					lineStyle: {
-						color: '#C9C9C9',
-						width: 1
-					}
-				},
-				data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-			},
-			yAxis: {
-				splitLine: {
-					show: true,
-					lineStyle: {
-						color: '#C9C9C9',
-						width: 1
-					}
-				}
-			},
-			series: [{
-				name: '销量',
-				type: 'bar',
-				//				areaStyle: {}
+				barWidth: 15, //柱图宽度
+				data: num,
 				itemStyle: {
 					normal: {
+//						barBorderRadius: [30, 30, 0, 0],
 						color: new echarts.graphic.LinearGradient(
 							0, 0, 0, 1, [{
 									offset: 0,
-									color: '#05BFA5'
+									color: '#00E0EA'
+
+								},
+								{
+									offset: 0.5,
+									color: '#08B2DC'
 								},
 								{
 									offset: 1,
-									color: '#fff'
+									color: '#08B0DB'
 								}
 							]
-						),
-						lineStyle: {
-							color: '#009CFF'
-						}
+						)
+
 					}
-				},
-				data: ydata
+				}
 			}]
 		};
-		myChart.setOption(option);
+		this.myChart.setOption(option);
 	}
-
+	
+	
+	lineActive(){
+		this.btnChange = this.ecBtn[0];
+		this.setEchars('line', this.xData, this.num)
+	}
+	barActive(){
+		this.btnChange = this.ecBtn[1];
+		this.setEchars('bar', this.xData, this.num)
+	}
 }

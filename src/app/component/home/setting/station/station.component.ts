@@ -14,9 +14,6 @@ export class StationComponent implements OnInit {
 	pageArr: any;
 	constructor() {}
 	ngOnInit() {
-		laydate.render({
-			elem: '#d1'
-		});
 
 		this.alertshow = false;
 		this.msglist = [

@@ -31,21 +31,24 @@
 	margin-right: 10px;
 }
 .ecList{
-	width: 60%;
+	width: 75%;
 	margin: 0 auto;
 	
 }
 .ecList>div{
 	width: 100%;
+	
+	position: relative;
+}
+.ecList>div.echartsContent{
 	border: 1px solid #DCDCDC;
 	background: #fff;
 	margin-top: 50px;
-	position: relative;
 }
 .select{
 	position: absolute;
 	top: 20px;
-	right: 20px;
+	left: 0;
 	z-index: 1000;
 }
 
@@ -53,10 +56,21 @@
 	border: 1px solid #ddd;
 	padding: 5px;
 	border-radius: 5px;
-	margin-left: 10px;
 }
- 
-
+ .btns{
+ 	position: absolute;
+ 	top: 20px;
+ 	right: 50px;
+ 	z-index: 100;
+ }
+ .btns a{
+ 	display: inline-block;
+ 	width: 50px;
+ 	
+ }
+.ec{
+	padding: 50px 0;
+}
 
 
 
