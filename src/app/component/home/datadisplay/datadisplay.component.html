@@ -4,15 +4,15 @@
 	</div>
 	<div class="ecList">
 		<div class="select">
-			<select class="name" [(ngModel)]='company_id'>
+			<select class="name" [(ngModel)]='company_id' (change)='getData(company_id, time)'>
 				<option value="141">无锡广盈实业有限公司</option>
+				<option value="142">AA广盈实业有限公司</option>
 			</select>
-			<select [(ngModel)]='time'>
+			<select [(ngModel)]='time' (change)='getData(company_id, time)'>
 				<option value="2018-05">2018年05月</option>
 				<option value="2018-06">2018年06月</option>
 			</select>
 			
-			<span>{{company_id}}--{{time}}</span>
 		</div>
 		<div class="echartsContent">
 				<div class="btns">
