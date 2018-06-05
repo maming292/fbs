@@ -38,15 +38,14 @@ export class DatadisplayComponent implements OnInit {
 				this.getData(this.company_id,this.time);
 
 		this.setEchars(this.ectype, this.xData, this.num);
-
 		this.ecwidth = $('.ecList').width();
 		$('.ec').height(this.ecwidth * 0.50);
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
 	}
 
 	getData(company_id, time) {
@@ -155,8 +154,8 @@ export class DatadisplayComponent implements OnInit {
 		};
 		this.myChart.setOption(option);
 	}
-	
-	
+
+
 	lineActive(){
 		this.btnChange = this.ecBtn[0];
 		this.ectype  = 'line';
