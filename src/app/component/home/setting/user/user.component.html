@@ -3,8 +3,8 @@
 		<span>系统设置&nbsp;&gt;&nbsp;用户管理</span>
 	</div>
 	<div class="selects">
-		<input type="text" name="stationName" id="stationName" value="" placeholder="用户名" />
-		<a class="sea">
+		<input type="text" name="stationName" id="stationName" value="" placeholder="用户名" [(ngModel)]='user_s'/>
+		<a class="sea" (click)='seach(user_s)'>
 			<img src="../../../../../assets/img/search_b.png" />
 		</a>
 
@@ -13,7 +13,7 @@
 				<img src="../../../../../assets/img/adds.png" />
 				<span>新增</span>
 			</a>
-			<a class="out">
+			<a class="out" (click)='out()'>
 				<img src="../../../../../assets/img/outs.png" />
 				<span>导出</span>
 			</a>
@@ -41,8 +41,12 @@
 					<tr *ngFor='let items of msglist;let i = index;'>
 						<ng-container *ngIf='i>=(page-1)*10&&i<page*10'>
 							<td>{{i+1}}</td>
-							<td *ngFor='let item of items;let i = index;'>{{item}}</td>
-							<td><a><img src="../../../../../assets/img/qx.png" /></a><a><img src="../../../../../assets/img/sc.png" /></a><a><img src="../../../../../assets/img/bj.png" /></a></td>
+							<td>{{items[0]}}</td>
+							<td>{{items[1]}}</td>
+							<td>{{items[2]}}</td>
+							<td>{{items[3]}}</td>
+							<td><a><img src="../../../../../assets/img/qx.png" /></a><a (click)='compile(items[0],items[1],items[2],items[4],items[5])'><img src="../../../../../assets/img/bj.png" /></a><a (click)="del(items[4])"><img src="../../../../../assets/img/sc.png" /></a>
+							</td>
 							</ng-container>
 					</tr>
 				</tbody>
@@ -82,18 +86,57 @@
 				<span>设置用户</span><i (click)='hiddens()' class="glyphicon glyphicon-remove"></i>
 			</div>
 			<div class="put">
-				<span>用户姓名</span><input type="text" placeholder="填写用户名称"/>
+				<span>用户名</span><input type="text" placeholder="填写用户名" [(ngModel)]='user_name'/>
 			</div>
 			<div class="put">
-				<span>真是姓名</span><input type="text" placeholder="填写真实姓名"/>
+				<span>密码</span><input type="text" placeholder="密码" [(ngModel)]='password' placeholder="6-21数字字母组合"/>
 			</div>
 			<div class="put">
-				<span>角色</span><select>
-					<option value="">管理员</option>
+				<span>真是姓名</span><input type="text" placeholder="填写真实姓名"[(ngModel)]='real_name'/>
+			</div>
+			<div class="put">
+				<span>角色</span>
+				<select [(ngModel)]='role_name'>
+					<option value="-1">请选择角色</option>
+					<ng-container *ngFor='let p of roles_add; let s = index'>
+						<option [value]="p['ID']">{{p.ROLE_NAME}}</option>
+					</ng-container>
 				</select>
 			</div>
 			<div class="myBtn">
-				<a (click)='hiddens()'>取消</a><a>确定</a>
+				<a (click)='hiddens()'>取消</a><a (click)='save()'>确定</a>
+			</div>
+		</div>
+	</div>
+	
+	<!--编辑-->
+		<div class="alerts" *ngIf='showcompile'>
+		<span class="middles"></span>
+		<div id="win">
+			<input type="hidden" [(ngModel)] ='id_com' />
+			<div class="alerttitle">
+				<span>编辑用户</span><i (click)='hiddencompile()' class="glyphicon glyphicon-remove"></i>
+			</div>
+			<!--<div class="put">
+				<span>用户名</span><input type="text" placeholder="填写用户名" [(ngModel)]='username_com'/>
+			</div>-->
+			<div class="put">
+				<span>密码</span><input type="text" placeholder="密码" [(ngModel)]='password_com'/>
+			</div>
+			<div class="put">
+				<span>真是姓名</span><input type="text" placeholder="填写真实姓名"[(ngModel)]='realname_com'/>
+			</div>
+			<div class="put">
+				<span>角色</span>
+				<select [(ngModel)]='rolename_com'>
+					<option value="-1">请选择角色</option>
+					<ng-container *ngFor='let p of roles_add; let s = index'>
+						<option [value]="p['ID']">{{p.ROLE_NAME}}</option>
+					</ng-container>
+				</select>
+			</div>
+			<div class="myBtn">
+				<a (click)='hiddencompile()'>取消</a><a (click)='savecompile()'>确定</a>
 			</div>
 		</div>
 	</div>

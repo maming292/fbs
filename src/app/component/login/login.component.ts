@@ -43,7 +43,9 @@ export class LoginComponent implements OnInit {
   ngOnDestroy(){
     clearInterval(this.interval);
   }
-
+setcookie(){
+	sessionStorage['name'] = this.login.username 
+}
   onSubmit(url,e){
      let loginInfo= new HttpParams().set('username',this.login.username).set('password',this.login.password);
      this.serve.login('/fbs/foreignForC/webLogin',loginInfo).then((data)=>{

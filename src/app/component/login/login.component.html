@@ -18,7 +18,7 @@
       密码不能为空！
     </div>
     <div class="row" style="padding: 0 20px;">
-      <button  type="submit" class="btn btn-primary  btn-flat col-md-5"  [disabled]="!loginForm.form.valid">登录</button>
+      <button  type="submit" class="btn btn-primary  btn-flat col-md-5" (click)='setcookie()'>登录</button>
       <button  type="button" class="btn btn-primary  btn-flat col-md-5 pull-right" (click)="newLogin();loginForm.reset()">重置</button>
     </div>
   </form>

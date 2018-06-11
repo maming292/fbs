@@ -15,6 +15,7 @@ export class RuningComponent implements OnInit {
   ch:any;
   P:string='0'//有功功率
   lth:number=0;
+  companyId:any;
   constructor(private route: Router,private loop:LoopService,private runSev:RuningService) { }
   url:string='/fbs/foreignForC/';//url前缀
   info =new HttpParams();//post参数
@@ -77,6 +78,7 @@ export class RuningComponent implements OnInit {
     let url=this.url+'photovoltaic_facility';
     let inf= new HttpParams().set('page','1').set('total_number','10').set('company_id',`${id}`);
     this.runSev.getData(url,inf).then(data=>{
+  
       if(data['code']==200){
           let datas=data;
           this.topData.all=datas['result']['SUM_EQ'];
@@ -112,7 +114,12 @@ export class RuningComponent implements OnInit {
   getCenterTop(){
     let url=this.url+'photovoltaic_companys';
     this.runSev.getData(url,this.info).then(data=>{
+    	console.log(data)
+    	
       if(data['code']==200){
+      	this.companyId = data['result']['0']['ID']
+      	
+      	
         this.mapCompany=data['result'];
         this.Run(data['result']['0']['ID'])
       }else{
@@ -127,7 +134,6 @@ export class RuningComponent implements OnInit {
           let datas=data;
           if(datas['code']==200){
             this.centerData=datas['result1']['list'];
-            console.log(this.centerData)
           }else{
             swal(`${datas['code']}`);
           }

@@ -25,23 +25,25 @@
         <div class="r_center">
           <div class="select row " style="padding: 25px;">
             <div class="col-sm-4 text-center">
-              <select class="form-control">
-                <option *ngFor="let item of list">{{item.AREA}}</option>
+              <select class="form-control" [(ngModel)] = 'area'>
+              	<option value="">区域</option>
+                <option *ngFor="let item of secarea" [value]='item'>{{item}}</option>
               </select>
             </div>
             <div class="col-sm-4"  >
-              <select class="form-control">
-                <option *ngFor="let item of list">{{item.STAND_TYPE}}</option>
+              <select class="form-control" [(ngModel)] = 'standtype'>
+              	<option value="">电站类型</option>
+                <option *ngFor="let item of sectype" [value]='item.STAND_TYPE'>{{item.STAND_TYPE}}</option>
               </select>
             </div>
             <div class="input-group input-group-sm col-sm-4 " >
-              <input type="text" class="form-control" placeholder="电站名称">
+              <input type="text" class="form-control" placeholder="电站名称" [(ngModel)] = 'companyname'>
               <span class="input-group-btn">
-                      <button type="button" class="btn btn-info btn-flat">搜</button>
+                      <button type="button" class="btn btn-info btn-flat" (click)='get()'>搜</button>
                     </span>
             </div>
-          </div>
-          <div class="ct_list" *ngFor="let item of list;let i=index" style="cursor: pointer"  (click)="onClick($event)"  >
+          </div>																																						//状态 type  规模		//当日 累计	
+          <div class="ct_list" *ngFor="let item of list;let i=index" style="cursor: pointer"  (click)="onClick(item.DAY_EQ,item.SUM_EQ)"  >
             <p  style="padding: 10px;height: 40px;line-height: 20px;" >
               <span class="toogle">{{i+1}}、{{item.COMPANY_NAME}}</span>
               <span class="pull-right" style="width: 60px;" *ngIf="map[item.ID]==0">

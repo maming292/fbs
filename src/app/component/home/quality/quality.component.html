@@ -19,7 +19,7 @@
       </div>
       <div class="tp select">
 					<span class="left" style="margin-top:9px;">
-						  <p-calendar [(ngModel)]="date" [showIcon]="true" [placeholder]="'选择日期'"  dateFormat="yy-mm-dd" [locale]="ch" [readonlyInput]="true"></p-calendar>
+						  <p-calendar [(ngModel)]="date" [showIcon]="true" [placeholder]="'选择日期'"  dateFormat="yy-mm-dd" [locale]="ch" [readonlyInput]="false"></p-calendar>
 					</span>
       </div>
       <div class="tp cn border" echarts [options]="option1" style="height: 50%;"></div>
@@ -35,7 +35,7 @@
       </div>
       <div class="tp select">
 					<span class="left" style="margin-top:9px;">
-						 <p-calendar [(ngModel)]="date_sc" [showIcon]="true" [placeholder]="'选择日期'"  dateFormat="yy-mm-dd" [locale]="ch" [readonlyInput]="true"></p-calendar>
+						 <p-calendar [(ngModel)]="date_sc" [showIcon]="true" [placeholder]="'选择日期'"  dateFormat="yy-mm-dd" [locale]="ch" [readonlyInput]="false"></p-calendar>
 					</span>
       </div>
       <div class="tp cn border" echarts [options]="option3" style="height: 50%;"></div>

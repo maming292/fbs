@@ -35,6 +35,9 @@ export class WeatherComponent implements OnInit {
   hasnextpage:any;
   hasprepage:any;
   pages:any=1;
+  data1: any;
+  data2: any;
+  data3: any;
   public gflag=false;
   ngOnInit() {
     this.ch = {
@@ -52,125 +55,12 @@ export class WeatherComponent implements OnInit {
       monthNamesShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
     };
 
-    let data1=['4800','4300','4100','4000','2400','5000','4700','3000','2000','1800','2800','3000','3500'];
-    let data2=['4000','2500','3400','3200','1800','1500','45','1200','1800','2000','2300','1600','2600','1000'];
-    let data3=['2000','1500','3400','2100','1000','2500','450','1900','2800','3000','3300','1600','2000','1900'];
-    this.option={
-      backgroundColor:'white',
-      color: ['#02E676', '#11A2FF', '#4caf50'],
-      tooltip: {
-        trigger: 'axis'
-      },
-      title: {
-        text: '发电量预测',
-        textStyle:{
-          color:'#656D78',
-          fontWeight:0
-        },
-        padding:[5 ,0, 0, 0]
-      },
-      legend: {
-        x: 'left',
-        padding: [50, 20,0,100],
-        data:[{name:'总辐射',icon:'circle'},
-          {name:'直辐射',icon:'circle'}, {name:'散辐射',icon:'circle'}],
-        selected: {
-          '总辐射': true,
-          '直辐射': true,
-          '散辐射': true
-        },
-        textStyle:{
-          color:'#656D78'
-        }
-      },
-      grid: {
+    this.data1=[0,0,0];
+    this.data2=[0,0,0];
+    this.data3=[0,0,0];
+     this.get();
 
-        right: '2.5%',
-        height:'60%',
-        width:'95%',
-        top:'35%',
-        containLabel: true
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        axisTick:{show:false},
-        axisLabel:{
-          textStyle:{
-            color:'#656D78'
-          }
-        },
-        splitLine:{//网格线
-          show: true,
-          lineStyle:{
-            color:['#F5F5F5'],
-            type:'solid'
-          }
-        },
-        data: ['0','1','2','3','4','5','6','7','8','9','10','11','12']
-      },
-      yAxis: {
-        axisTick:{show:false},
-        axisLine:{
-          show:false,
-          //    onZero:false
-        },
-        axisLabel:{
-          textStyle:{
-            color:'#656D78'
-          }
-        },
-        splitLine:{//网格线
-          show: true,
-          lineStyle:{
-            color:['#F5F5F5'],
-            type:'solid'
-          }
-        }
-      },
-      series: [
-        {
-          name:'总辐射',
-          type:'line',
-          smooth:true,
-          symbolSize:12,
-          data:data1,
-          label: {
-            normal: {
-              show: false,
-              position: 'top'//值显示
-            }
-          }
-        },
-        {
-          name:'直辐射',
-          type:'line',
-          smooth:true,
-          symbolSize:12,
-          data:data2,
-          label: {
-            normal: {
-              show: false,
-              position: 'top'
-            }
-          }
-        },
-        {
-          name:'散辐射',
-          type:'line',
-          smooth:true,
-          symbolSize:12,
-          data:data3,
-          label: {
-            normal: {
-              show: false,
-              position: 'top'
-            }
-          }
-        }
-      ]
-    };
-    this.get();
+   
   }
   get(){
     //获取气象信息
@@ -179,6 +69,10 @@ export class WeatherComponent implements OnInit {
         this.codes=data['result'];//公司集合
         this.firstdata=data['result'][0]['ID'];
         this.service.getWeatherDetailData(this.firstdata).then(data=>{
+        	console.log(data)
+        	this.setlinedata(this.data1,data['results'][0]);
+        	this.setlinedata(this.data2,data['results'][1]);
+        	this.setlinedata(this.data3,data['results'][2]);
           this.detailweather=data['result'];
         }).catch(e=>console.log(e))
       }
@@ -320,6 +214,129 @@ export class WeatherComponent implements OnInit {
     }else{
       swal('请选择开始日期/结束日期！');
     }
+  }
+  
+    setlinedata(data,result){
+    	
+for(var s in result){
+	data.push(Number(result[s]));
+	    this.option={
+      backgroundColor:'white',
+      color: ['#02E676', '#11A2FF', '#4caf50'],
+      tooltip: {
+        trigger: 'axis'
+      },
+      title: {
+        text: '发电量预测',
+        textStyle:{
+          color:'#656D78',
+          fontWeight:0
+        },
+        padding:[5 ,0, 0, 0]
+      },
+      legend: {
+        x: 'left',
+        padding: [50, 20,0,100],
+        data:[{name:'总辐射',icon:'circle'},
+          {name:'直辐射',icon:'circle'}, {name:'散辐射',icon:'circle'}],
+        selected: {
+          '总辐射': true,
+          '直辐射': true,
+          '散辐射': true
+        },
+        textStyle:{
+          color:'#656D78'
+        }
+      },
+      grid: {
+
+        right: '2.5%',
+        height:'60%',
+        width:'95%',
+        top:'35%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        axisTick:{show:false},
+        axisLabel:{
+          textStyle:{
+            color:'#656D78'
+          }
+        },
+        splitLine:{//网格线
+          show: true,
+          lineStyle:{
+            color:['#F5F5F5'],
+            type:'solid'
+          }
+        },
+        data: ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23']
+      },
+      yAxis: {
+        axisTick:{show:false},
+        axisLine:{
+          show:false,
+          //    onZero:false
+        },
+        axisLabel:{
+          textStyle:{
+            color:'#656D78'
+          }
+        },
+        splitLine:{//网格线
+          show: true,
+          lineStyle:{
+            color:['#F5F5F5'],
+            type:'solid'
+          }
+        }
+      },
+      series: [
+        {
+          name:'总辐射',
+          type:'line',
+          smooth:true,
+          symbolSize:12,
+          data:this.data1,
+          label: {
+            normal: {
+              show: false,
+              position: 'top'//值显示
+            }
+          }
+        },
+        {
+          name:'直辐射',
+          type:'line',
+          smooth:true,
+          symbolSize:12,
+          data:this.data2,
+          label: {
+            normal: {
+              show: false,
+              position: 'top'
+            }
+          }
+        },
+        {
+          name:'散辐射',
+          type:'line',
+          smooth:true,
+          symbolSize:12,
+          data:this.data3,
+          label: {
+            normal: {
+              show: false,
+              position: 'top'
+            }
+          }
+        }
+      ]
+    };
+	
+}
   }
 }
 export class detail{

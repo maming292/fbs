@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpHeaders,HttpClient,HttpParams} from '@angular/common/http';
 import {NavigationEnd, Router} from '@angular/router';
 @Injectable()
-export class PublicService {//"http://192.168.20.122:8088"
-  path="http://192.168.20.122:8088";
+export class PublicService {
+//path="http://192.168.20.122:8088";
+  path="http://192.168.1.181:8088";
   headers = new HttpHeaders().set("Accept", "*/*");
   options={headers:this.headers,withCredentials:true};
   constructor(private http:HttpClient,private route:Router) { }

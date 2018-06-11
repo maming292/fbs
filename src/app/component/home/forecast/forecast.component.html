@@ -145,10 +145,10 @@
             </span>
         </div>
           <span>
-            <p-calendar [(ngModel)]="startdate" [showIcon]="true" [placeholder]="'开始日期'"  dateFormat="yy-mm-dd" [maxDate]="enddate"  [locale]="ch" [readonlyInput]="true"   ></p-calendar>
+            <p-calendar [(ngModel)]="startdate" [showIcon]="true" [placeholder]="'开始日期'"  dateFormat="yy-mm-dd" [maxDate]="enddate"  [locale]="ch" [readonlyInput]="false"   ></p-calendar>
           </span>
           <span style="margin-left: 50px;width:24%;margin-right: 20px;">
-            <p-calendar [(ngModel)]="enddate" [showIcon]="true" [placeholder]="'结束日期'" [minDate]="startdate"  dateFormat="yy-mm-dd" [locale]="ch" [readonlyInput]="true"></p-calendar>
+            <p-calendar [(ngModel)]="enddate" [showIcon]="true" [placeholder]="'结束日期'" [minDate]="startdate"  dateFormat="yy-mm-dd" [locale]="ch" [readonlyInput]="false"></p-calendar>
           </span>
           <button pButton type="button" icon="fa-search" iconPos="left"></button>
           <button class="pull-right" style="margin-top: 5px" pButton type="button" icon="fa-external-link" iconPos="left" title="导出"></button>

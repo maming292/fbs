@@ -189,8 +189,8 @@
         <div class="col-md-8 column ui-sortable" style="">
           <div class="row clearfix pdlft">
             <div class="col-md-4 column ui-sortable" style="">
-              <select class="form-control" style="border-radius: 8px;">
-                <option *ngFor="let item of mapCompany" (change)="Run(item.ID)">{{item.COMPANY_NAME}}</option>
+              <select class="form-control" style="border-radius: 8px;" [(ngModel)]='companyId' (change)="Run(companyId)">
+                <option *ngFor="let item of mapCompany;let i = index;" [value]='item.ID'>{{item.COMPANY_NAME}}</option>
               </select>
             </div>
             <div class="col-md-8 column ui-sortable" style="">
