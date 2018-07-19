@@ -167,7 +167,7 @@ table{
 }
 #win .put input,#win .put select{
 	display: inline-block;
-	width: 80%;
+	width: 82%;
 	background: #fff;
 	height: 40px;
 	line-height: 40px;
@@ -260,13 +260,27 @@ input[type='file']{
 	position: relative;
 }
 
+.alerttitle+div{
+	padding-right:12px ;
+}
+.alerttitle+div input{
+	margin-left: 1px;
+}
+.put input{
+	padding-left:10px;
+	padding-right:10px;
+}
 
 
-
-
-
-
-
+.put em{
+	color: red;
+	display: inline-block;
+	margin-right: 5px;
+	font-size: 20px;
+	height: 8px;
+	line-height: 14px;
+	vertical-align: middle;
+}
 
 
 

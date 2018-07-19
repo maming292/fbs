@@ -3,23 +3,23 @@
 		<span>系统设置&nbsp;&gt;&nbsp;行政区域</span>
 	</div>
 	<div class="selects">
-		<select name="" id="area" [(ngModel)]='prov_v'>
+		<select name="" id="area" [(ngModel)]='prov_v' (change)='getshi(1)'>
 			<option value="-1">选择省</option>
-				<ng-container *ngFor='let p of prov_s'>
-					<option [value]="p">{{p}}</option>
-				</ng-container>
+			<ng-container *ngFor='let p of prov_s'>
+				<option [value]="p.value">{{p.text}}</option>
+			</ng-container>
 		</select>
-		<select name="" id="kind" [(ngModel)]='city_v'>
+		<select name="" id="kind" [(ngModel)]='city_v' (change)='getqu()'>
 			<option value="-1">选择市</option>
 			<ng-container *ngFor='let p of city_s'>
-					<option [value]="p">{{p}}</option>
-				</ng-container>
+				<option [value]="p.CITYID">{{p.CITYNAME}}</option>
+			</ng-container>
 		</select>
 		<select name="" id="kind" [(ngModel)]='area_v'>
 			<option value="-1">区域</option>
 			<ng-container *ngFor='let p of area_s'>
-					<option [value]="p">{{p}}</option>
-				</ng-container>
+				<option [value]="p.CITYNAME">{{p.CITYNAME}}</option>
+			</ng-container>
 		</select>
 		<a class="sea" (click)='seach(prov_v,city_v,area_v)'>
 			<img src="../../../../../assets/img/search_b.png" />
@@ -57,7 +57,6 @@
 					<tr *ngFor='let items of msglist;let i = index;'>
 						<ng-container *ngIf='i>=(page-1)*10&&i<page*10'>
 							<td>{{i+1}}</td>
-							<!--<td *ngFor='let item of items;let i = index;'>{{item}}</td>-->
 							<td>{{items[0]}}</td>
 							<td>{{items[1]}}</td>
 							<td>{{items[2]}}</td>
@@ -104,22 +103,33 @@
 			</div>
 			<div class="put" style="text-align: right;padding-right: 15px;">
 				<p><span>省市</span>
-					<select [(ngModel)]='prov'>
+					<select [(ngModel)]='prov' (change)='getshi(2)'>
 						<option value="-1">选择省</option>
-						<option value="江苏省">江苏省</option>
+						<ng-container *ngFor='let p of prov_s'>
+							<option [value]="p.text">{{p.text}}</option>
+						</ng-container>
 					</select>
 				</p>
 				<p><span>市县</span>
 					<select [(ngModel)]='city'>
 						<option value="-1">选择市</option>
-						<option value="南京市">南京市</option>
-						<option value="苏州市">苏州市</option>
-						<option value="无锡市">无锡市</option>
+						<ng-container *ngFor='let p of city_a'>
+							<option [value]="p.CITYNAME">{{p.CITYNAME}}</option>
+						</ng-container>
 					</select>
 				</p>
 			</div>
 			<div class="put">
-				<span>区域</span><input [(ngModel)]='area' type="text"/>
+				<!--				<span>区域</span><input [(ngModel)]='area' type="text" />
+-->
+					<span>区域</span>
+					<input type="text" [(ngModel)]='area'/>
+				<!--<select name="" id="kind" [(ngModel)]='area'>
+					<option value="-1">区域</option>
+					<ng-container *ngFor='let p of area_a'>
+						<option [value]="p.CITYID">{{p.CITYNAME}}</option>
+					</ng-container>
+				</select>-->
 			</div>
 
 			<div class="myBtn">
@@ -129,7 +139,7 @@
 		</div>
 	</div>
 	<!-- 编辑-->
-		<div class="alerts" *ngIf='showcompile'>
+	<div class="alerts" *ngIf='showcompile'>
 		<span class="middles"></span>
 		<div id="win">
 			<div class="alerttitle">
@@ -137,23 +147,32 @@
 			</div>
 			<div class="put" style="text-align: right;padding-right: 15px;">
 				<p><span>省市</span>
-					<input type="hidden" [(ngModel)] ='id_com' />
-					<select [(ngModel)]='prov_com'>
+					<input type="hidden" [(ngModel)]='id_com' />
+					<select [(ngModel)]='prov' (change)='getshi(3)'>
 						<option value="-1">选择省</option>
-						<option value="江苏省">江苏省</option>
+						<ng-container *ngFor='let p of prov_s'>
+							<option [value]="p.text">{{p.text}}</option>
+						</ng-container>
 					</select>
 				</p>
 				<p><span>市县</span>
 					<select [(ngModel)]='city_com'>
-						<option value="-1">选择市</option>
-						<option value="南京市">南京市</option>
-						<option value="苏州市">苏州市</option>
-						<option value="无锡市">无锡市</option>
+						<option value="-1" title="987">选择市</option>
+						<ng-container *ngFor='let p of city_c'>
+							<option [value]="p.CITYNAME" [title]='p.CITYNAME'>{{p.CITYNAME}}</option>
+						</ng-container>
 					</select>
 				</p>
 			</div>
 			<div class="put">
-				<span>区域</span><input [(ngModel)]='area_com' type="text"/>
+				<span>区域</span>
+				<input type="text" [(ngModel)]='area_com'/>
+				<!--<select name="" id="kind" [(ngModel)]='area_com'>
+					<option value="-1">区域</option>
+					<ng-container *ngFor='let p of area_c'>
+						<option [value]="p.CITYNAME">{{p.CITYNAME}}</option>
+					</ng-container>
+				</select>-->
 			</div>
 
 			<div class="myBtn">
@@ -162,6 +181,5 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
 </div>

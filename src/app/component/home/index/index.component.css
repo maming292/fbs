@@ -40,10 +40,10 @@
   background: url(../../../../assets/img/u177.png)no-repeat;
 }
 .contentd>.right >.r_top>div{
-  width: 28%;
+  width: 31%;
   height:70%;
   display: inline-block;
-  margin-left: 3.5%;
+  margin-left:1%;
   margin-top: 4%;
   position: relative;
   vertical-align: text-top;
@@ -51,7 +51,7 @@
   color: white;
 }
 .contentd>.right >.r_top>div>span{
-  width: 80%;
+  width: 95%;
   height:70%;
   display: block;
   text-align: center;
@@ -112,10 +112,7 @@ padding: 8px 0;
   font-size: 13px;line-height: 2.7;
 }
 .backMap{
-	width: 60px;
-	height: 60px;
-	line-height: 58px;
-	border: 1px solid #333;
+	/*box-shadow: 5px 5px 5px #999;*/
 	position: fixed;
 	top: 80px;
 	left: 50px;

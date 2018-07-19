@@ -107,23 +107,23 @@
 				<span>新增站点信息</span><i (click)='hiddens()' class="glyphicon glyphicon-remove"></i>
 			</div>
 			<div class="put">
-				<span>站点名称</span><input type="text" placeholder="填写用户名称(必填)" [(ngModel)]='companyname_new'/>
+				<span><em>*</em>站点名称</span><input type="text" placeholder="填写用户名称" [(ngModel)]='companyname_new'/>
 			</div>
 			<div class="put">
-				<p><span>电站类型</span>
-					<input type="text"  [(ngModel)]='standtype_new' placeholder="填写电站类型(必填)"/>
+				<p><span><em>*</em>电站类型</span>
+					<input type="text"  [(ngModel)]='standtype_new' placeholder="填写电站类型"/>
 				</p>
-				<p><span>建设类型</span>
+				<p><span><em>*</em>建设类型</span>
 					<input type="text"  [(ngModel)]='construction_new'/>
 				</p>
 			</div>
 			<div class="put">
-				<p><span>建设规模</span>
+				<p><span><em>*</em>建设规模</span>
 					<input type="text"  [(ngModel)]='constructionscale_new'/>
 				</p>
-				<p><span>所属区域</span>
+				<p><span><em>*</em>所属区域</span>
 					<select [(ngModel)]='area_new'>
-						<option value="">请选择(必选)</option>
+						<option value="">请选择</option>
 						<ng-container *ngFor='let p of area_arr'>
 					<option [value]="p">{{p}}</option>
 				</ng-container>
@@ -132,17 +132,17 @@
 			</div>
 			<div class="put">
 				<p><span>投资回报率</span>
-					<input type="text"  [(ngModel)]='raroc_new'/>
+					<input type="number"  [(ngModel)]='raroc_new'/>
 				</p>
 				<p><span>节约成本/年</span>
 					<input type="text"  [(ngModel)]='savings_new'/>
 				</p>
 			</div>
 			<div class="put">
-				<p><span>经度</span>
+				<p><span><em>*</em>经度</span>
 					<input type="text"  [(ngModel)]='long_new'/>
 				</p>
-				<p><span>纬度</span>
+				<p><span><em>*</em>纬度</span>
 					<input type="text"  [(ngModel)]='latitude_new'/>
 				</p>
 			</div>
@@ -166,21 +166,21 @@
 				<span>编辑站点信息</span><i (click)='hiddencompile()' class="glyphicon glyphicon-remove"></i>
 			</div>
 			<div class="put">
-				<span>站点名称</span><input type="text" placeholder="填写站点名称(必填)" [(ngModel)]='companyname_com'/>
+				<span><em>*</em>站点名称</span><input type="text" placeholder="填写站点名称" [(ngModel)]='companyname_com'/>
 			</div>
 			<div class="put">
-				<p><span>电站类型</span>
-					<input type="text"  [(ngModel)]='standtype_com' placeholder="填写电站类型(必填)" />
+				<p><span><em>*</em>电站类型</span>
+					<input type="text"  [(ngModel)]='standtype_com' placeholder="填写电站类型" />
 				</p>
-				<p><span>建设类型</span>
+				<p><span><em>*</em>建设类型</span>
 					<input type="text"  [(ngModel)]='construction_com'/>
 				</p>
 			</div>
 			<div class="put">
-				<p><span>建设规模</span>
+				<p><span><em>*</em>建设规模</span>
 					<input type="text"  [(ngModel)]='constructionscale_com'/>
 				</p>
-				<p><span>所属区域</span>
+				<p><span><em>*</em>所属区域</span>
 					<select [(ngModel)]='area_com'>
 						<option value="">请选择（必选）</option>
 						<ng-container *ngFor='let p of area_arr'>
@@ -191,17 +191,17 @@
 			</div>
 			<div class="put">
 				<p><span>投资回报率</span>
-					<input type="text"  [(ngModel)]='raroc_com'/>
+					<input type="number"  [(ngModel)]='raroc_com'/>
 				</p>
 				<p><span>节约成本/年</span>
 					<input type="text"  [(ngModel)]='savings_com'/>
 				</p>
 			</div>
 			<div class="put">
-				<p><span>经度</span>
+				<p><span><em>*</em>经度</span>
 					<input type="text"  [(ngModel)]='long_com'/>
 				</p>
-				<p><span>纬度</span>
+				<p><span><em>*</em>纬度</span>
 					<input type="text"  [(ngModel)]='latitude_com'/>
 				</p>
 			</div>
@@ -216,8 +216,6 @@
 		</div>
 	</div>
 	
-	
 	 <!--上传图片 展示-->
-	<!--<img id='companyImg' [src]="showimg" style="display: none;"/>-->
-	<!--<img id='companyImg' src="../../../../../assets/img/bg4.png" style="display: none;"/>-->
+	<!--<img [src]="imgbase64_new" style="width: 700px;"/>-->
 </div>

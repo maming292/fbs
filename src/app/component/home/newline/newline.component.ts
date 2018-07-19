@@ -21,6 +21,8 @@ export class NewlineComponent implements OnInit {
 	list: any;
 	ydatas: any;
 	ecmsg: any;
+	marked:any;
+	team:any;
 	constructor(private route: Router, private serve: IndexService, private http: HttpClient) {}
 	ngOnInit() {
 		var a = [{ //路径
@@ -51,28 +53,16 @@ export class NewlineComponent implements OnInit {
 		var i = 0;
 		this.details = [
 			[
-				['广盈实业', '光伏电站', '1000', '定位', '1'],
-				['XX实业', '变电站', '1000', '定位'],
-				['XX实业', '其他', '1000', '定位'],
-				['XX实业', '光伏电站', '1000', '定位', '1']
+				['广盈实业', '光伏电站', '1000'],
+				['XX实业', '变电站', '1000'],
+				['XX实业', '其他', '1000'],
+				['XX实业', '光伏电站', '1000']
 			],
 			[
-				['广盈实业', '光伏电站', '1000', '定位', '1'],
-				['XX实业', '变电站', '1000', '定位'],
-				['XX实业', '其他', '1000', '定位'],
-				['XX实业', '光伏电站', '1000', '定位', '1']
-			],
-			[
-				['广盈实业', '光伏电站', '1000', '定位', '1'],
-				['XX实业', '变电站', '1000', '定位'],
-				['XX实业', '其他', '1000', '定位'],
-				['XX实业', '光伏电站', '1000', '定位', '1']
-			],
-			[
-				['广盈实业', '光伏电站', '1000', '定位', '1'],
-				['XX实业', '变电站', '1000', '定位'],
-				['XX实业', '其他', '1000', '定位'],
-				['XX实业', '光伏电站', '1000', '定位', '1']
+				['广盈实业', '光伏电站', '1000'],
+				['XX实业', '变电站', '1000'],
+				['XX实业', '其他', '1000'],
+				['XX实业', '光伏电站', '1000']
 			]
 		];
 		var lnglats = [];
@@ -85,6 +75,9 @@ export class NewlineComponent implements OnInit {
 		 */
 
 		AMapUI.loadUI(['overlay/SimpleInfoWindow'], function(SimpleInfoWindow) {
+			// 根据线路 条数生成 n 个容器
+			console.log(this)
+			
 			var markers1 = [];
 			var markers2 = [];
 
@@ -92,7 +85,7 @@ export class NewlineComponent implements OnInit {
 				addMarker(markers1, 'marker1', a[0].path[i], "../../../../assets/img/z2.png", true);
 			}
 			for(var i = 0; i < a[1].path.length; i++) {
-				addMarker(markers2, 'marker2', a[1].path[i], "../../../../assets/img/z1.png", false);
+				addMarker(markers1, 'marker2', a[1].path[i], "../../../../assets/img/z2.png", false);
 
 			}
 			var infoWindow = null;
@@ -119,7 +112,7 @@ export class NewlineComponent implements OnInit {
 				AMap.event.addListener(marker, 'click', function(e) {
 					var name = ecmsg[marker.customData.myProperty][0];
 					var data = ecmsg[marker.customData.myProperty][1];
-					//				console.log(marker.customData.myProperty)
+								console.log(marker.customData.myProperty)
 					infoTitle = '<span style="color:#333">' + name + '</span>';
 					setInfoWindow(infoTitle, data);
 					infoWindow.open(map, marker.getPosition());
@@ -131,12 +124,12 @@ export class NewlineComponent implements OnInit {
 
 					console.log(marker);
 
-					if(boll) {
-						for(let i = 0; i < markers1.length; i++) {
-							markers1[i].setIcon('../../../../assets/img/z2.png')
-						}
-						markers1[marker.customData.myProperty].setIcon('../../../../assets/img/z1a.png')
-					}
+					
+//						for(let i = 0; i < markers1.length; i++) {
+//							markers1[i].setIcon('../../../../assets/img/z2.png')
+//						}
+//						markers1[marker.customData.myProperty].setIcon('../../../../assets/img/z1a.png')
+//					
 					
 				});
 				markers.push(marker);
@@ -156,7 +149,6 @@ export class NewlineComponent implements OnInit {
 			$('.posi').on('click',getCenter)
 				function getCenter(){
 					for(let i = 0; i < markers1.length; i++) {
-						console.log(markers1[1].getPosition())
 							markers1[i].setIcon('../../../../assets/img/z2.png')
 						}
 					
@@ -182,7 +174,7 @@ export class NewlineComponent implements OnInit {
 			function showCompany(companyName, marker) {
 
 			}
-		}); //创建信息窗体 end
+		}.bind(this)); //创建信息窗体 end
 
 		AMapUI.load(['ui/misc/PathSimplifier', 'lib/$'], function(PathSimplifier, $) { // 路径
 			if(!PathSimplifier.supportCanvas) {
@@ -301,4 +293,11 @@ export class NewlineComponent implements OnInit {
 	getCenter(index) {
 		
 	}
+	
+	setteam(team){
+		this.team = team+1;
+	}
+	cl(){
+	console.log('无锡广盈实业有限公司 2500kVA 备供')
+}
 }

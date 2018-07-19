@@ -7,7 +7,7 @@
       <div class="row clearfix">
         <div class="col-md-4 column ui-sortable" style="height: 84vh">
           <div class="box">
-            <div class="row clearfix pdlft">
+            <!--<div class="row clearfix pdlft">
               <div class="col-md-6 column ui-sortable" style="">
                 <select class="form-control" style="border-radius: 8px;">
                   <option>全站</option>
@@ -17,7 +17,7 @@
                 <p-calendar [(ngModel)]="startdate"  (onSelect)="callbackI($event)" [showIcon]="true" [placeholder]="'开始日期'" dateFormat="yy-mm-dd"
                              [locale]="ch" [readonlyInput]="true"></p-calendar>
               </div>
-            </div>
+            </div>-->
             <div class="row clearfix pdlft">
               <div class="col-md-12 column ui-sortable" style="">
                 <div class="info-box">
@@ -82,7 +82,7 @@
                   </span>
 
                   <div class="info-box-content">
-                    <span class="info-box-number bl">20</span>
+                    <span class="info-box-number bl">0</span>
                     <span class="">接入风能站总数</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -91,13 +91,13 @@
             </div>
             <div class="row clearfix pdlft" style="padding: 6px 0;">
               <div class="col-md-4 column ui-sortable info-box-number bl" style="">
-                2651300000.00
+                0
               </div>
               <div class="col-md-4 column ui-sortable info-box-number gn" style="">
-                21111.00
+                0
               </div>
               <div class="col-md-4 column ui-sortable info-box-number og" style="">
-                111111.00
+              0
               </div>
             </div>
             <div class="row clearfix pdlft" style="padding: 15px 0;">
@@ -138,7 +138,7 @@
                   </span>
 
                   <div class="info-box-content">
-                    <span class="info-box-number bl">20</span>
+                    <span class="info-box-number bl">0</span>
                     <span class="">接其他站总数</span>
                   </div>
                   <!-- /.info-box-content -->
@@ -147,13 +147,13 @@
             </div>
             <div class="row clearfix pdlft" style="padding: 6px 0;">
               <div class="col-md-4 column ui-sortable info-box-number bl" style="">
-                2651300000.00
+                0
               </div>
               <div class="col-md-4 column ui-sortable info-box-number gn" style="">
-                21111.00
+                0
               </div>
               <div class="col-md-4 column ui-sortable info-box-number og" style="">
-                111111.00
+                0
               </div>
             </div>
             <div class="row clearfix pdlft" style="padding: 15px 0;">
@@ -194,16 +194,16 @@
               </select>
             </div>
             <div class="col-md-8 column ui-sortable" style="">
-              <button type="button" class="btn  btn-info btn-lg" style="height: 50px;"><img src="../../../../assets/images/u6068.png" />表格统计</button>
+              <button  (click)='tables()' type="button" class="btn  btn-info btn-lg" style="height: 50px;"><img src="../../../../assets/images/u6068.png" />表格统计</button>
               <button (click)='todis()' type="button" class="btn  btn-primary btn-lg" style="height: 50px;"><img src="../../../../assets/images/u6070.png" />图表分析</button>
             </div>
           </div>
           <div class="row clearfix pdlft bg_yellow" >
             <div class="col-md-3 column ui-sortable" style="position: relative;height: 92px;">
               <div class="box" style="border-top: 1px solid #d2d6de;bottom: 0;position: relative;top:0;padding: 10px!important;">
-                <div>日发电量：<span class="bl">{{topData.day|fixedNumber}}</span></div>
-                <div>当月电量：<span class="bl">{{topData.month|fixedNumber}}</span></div>
-                <div>总发电量：<span class="bl">{{topData.all|fixedNumber}}</span></div>
+                <div>日发电量：<span class="bl">{{topData.day|fixedNumber}} kwh</span></div>
+                <div>当月电量：<span class="bl">{{topData.month|fixedNumber}} kwh</span></div>
+                <div>总发电量：<span class="bl">{{topData.all|fixedNumber}} kwh</span></div>
               </div>
             </div>
             <div class="col-md-4 column ui-sortable" style="height: 100px;">
@@ -234,26 +234,26 @@
                     <div class="col-md-10  " style="min-height: 200px;">
                       <div class="col-md-12 text-right npd  " style="height: 50px;line-height: 50px;">有功功率:
                         <div class="gn dinbk" >
-                          <div class="gn dbox" style="position: relative;top:-9px;" >{{item.P|fixedNumber}}</div>
+                          <div class="gn dbox" style="position: relative;top:-9px;" >{{item.P|fixedNumber}} kW</div>
 
                         </div>
                       </div>
                       <div class="col-md-12 text-right npd " style="height: 50px;line-height: 50px;">A项:
                         <div class="gn dinbk" >
-                          <div class="gn dbox" >{{item.UA|fixedNumber}}</div>
-                          <div class="gn dbox" >{{item.IA|fixedNumber}}</div>
+                          <div class="gn dbox" >{{item.UA|fixedNumber}}V</div>
+                          <div class="gn dbox" >{{item.IA|fixedNumber}}A</div>
                         </div>
                       </div>
                       <div class="col-md-12 text-right npd  " style="height: 50px;line-height: 50px;">B项:
                         <div class="gn dinbk" >
-                          <div class="gn dbox" >{{item.UB|fixedNumber}}</div>
-                          <div class="gn dbox" >{{item.IB|fixedNumber}}</div>
+                          <div class="gn dbox" >{{item.UB|fixedNumber}}V</div>
+                          <div class="gn dbox" >{{item.IB|fixedNumber}} A</div>
                         </div>
                       </div>
                       <div class="col-md-12 text-right npd " style="height: 50px;line-height: 50px;">C项:
                         <div class="gn dinbk" >
-                          <div class="gn dbox" >{{item.UC|fixedNumber}}</div>
-                          <div class="gn dbox" >{{item.IC|fixedNumber}}</div>
+                          <div class="gn dbox" >{{item.UC|fixedNumber}}V</div>
+                          <div class="gn dbox" >{{item.IC|fixedNumber}}A</div>
                         </div>
                       </div>
                     </div>

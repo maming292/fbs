@@ -17,9 +17,9 @@ export class WeatherService {
     let info =new HttpParams().set('company_id',id);
     return this.http.post(`${this.sev.path}/fbs/foreignForC/weather`,info,this.options).toPromise();
   }
-  getPages(page,total_number,start_time,end_time,bool){
+  getPages(page,total_number,start_time,end_time,bool,id){
     if(!bool){
-      let info=new HttpParams().set('page',page).set('total_number',total_number);
+      let info=new HttpParams().set('page',page).set('total_number',total_number).set('company_id',id).set('start_time',start_time).set('end_time',end_time);
       // let obj={'page':`${page}`,'total._number':`${total_number}`,'start_time':`${start_time}`,'end_time':`${end_time}`};
       return this.http.post(`${this.sev.path}/fbs/foreignForC/weatherAll`,info,this.options).toPromise();
     }else{

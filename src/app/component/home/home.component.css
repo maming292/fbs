@@ -1,4 +1,9 @@
-
+.acti{
+  background: #463a3a42;
+}
+.byclass.acti{
+	background: #463a3a42;
+}
 @media (max-width: 768px) {
   .sidebar-mini.sidebar-collapse .main-header .logo {
     width: 50px;
@@ -15,6 +20,9 @@
   .sidebar-toggle{
     display: none;
   }
+  .acti{
+  background: #463a3a42;
+}
 }
 
 

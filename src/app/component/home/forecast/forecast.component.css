@@ -335,3 +335,30 @@ nav .lc{
   border: none;
   color:darkgreen;
 }
+
+.data3 th,.data3 td{
+	text-align: center;
+}
+
+.showpow{
+	position: absolute;
+	top: 55px;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+	text-align: center;
+}
+.showpow span:first-child{
+	color: #11A2FF;
+	padding-left: 30px;
+	
+}
+.showpow span:last-child{
+	color: #02E676;
+	padding-left: 45px;
+}
+.showpow span{
+	display: inline-block;
+	width: 140px;
+	text-align: left;
+}

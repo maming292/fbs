@@ -73,6 +73,8 @@ export class RoleComponent implements OnInit {
 	}
 	hiddens() {
 		this.alertshow = false;
+		this.addrolename = '';
+		this.addroledesc = '';
 	}
 	prev() {
 		if(this.page > 1) {
@@ -133,6 +135,8 @@ export class RoleComponent implements OnInit {
 		}.bind(this));
 
 		this.alertshow = false;
+		this.addrolename = '';
+		this.addroledesc = '';
 	}
 
 	del(id) {

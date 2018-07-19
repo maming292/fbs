@@ -16,6 +16,8 @@ import { EquipmentComponent } from './component/home/setting/equipment/equipment
 import { UserComponent } from './component/home/setting/user/user.component';
 import { RoleComponent } from './component/home/setting/role/role.component';
 import { AreaComponent } from './component/home/setting/area/area.component';
+import { TablestatcComponent } from './component/home/tablestatc/tablestatc.component';
+import { Newline2Component } from './component/home/newline2/newline2.component';
 
 const routes: Routes = [
 	{path:'',redirectTo:'/login',pathMatch:'full'},
@@ -30,7 +32,9 @@ const routes: Routes = [
       {path:'quality',component:QualityComponent},
       {path:'runing',component:RuningComponent},
       {path:'newline',component:NewlineComponent},
+      {path:'newline2',component:Newline2Component},
       {path:'datadisplay',component:DatadisplayComponent},
+      {path:'tablestatc',component:TablestatcComponent},
       {path:'setting',component:SettingComponent,children:[
       	{path:'',redirectTo:'/home/setting/station',pathMatch:'full'},
       	{path:'station',component:StationComponent},

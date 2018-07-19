@@ -56,7 +56,10 @@ export class EquipmentComponent implements OnInit {
 		this.showcompile = false;
 	}
 	savecompile() {
-
+if(!this.company_com) {
+					swal("所属站点不能为空！");
+					return;
+				}
 		var company_id = this.company_list[this.company_com]
 		
 		let info = new HttpParams().set('COMPANY_ID', company_id).set('FACILITY_NAME', this.area_com).set('ID', this.id_com);
@@ -72,7 +75,7 @@ export class EquipmentComponent implements OnInit {
 		this.http.post(`${this.service.path}/fbs/system/findFacility`, info, this.options)
 			.subscribe(function(data) {
 				this.area_opt = data['areaAll'];
-				console.log(data['companys'])
+				this.company_opt = [];
 				for(let i = 0; i < data['companys'].length; i++) {
 					this.company_list[data['companys'][i]['COMPANY_NAME']] = data['companys'][i]['ID']
 					this.company_opt.push(data['companys'][i]['COMPANY_NAME']);

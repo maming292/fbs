@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit {
 		this.alertshow = false;
 		this.waringalert = false;
 		this.getwaring();
+		
 
 	}
 
@@ -44,7 +45,6 @@ export class HeaderComponent implements OnInit {
 		this.waringarr = [];
 		this.http.get(`${this.sev.path}/fbs/foreignForC/getWarn`)
 			.subscribe(function(data) {
-				console.log(data['list'])
 				let arr = []
 			for(let i = 0;i<data['list'].length;i++){
 				arr.push(data['list'][i]['FACILITY_NUMBER']);
@@ -59,7 +59,6 @@ export class HeaderComponent implements OnInit {
 				}
 			}.bind(this))
 		
-		console.log(this.waringarr)
 		this.maxPage = Math.ceil((this.waringarr.length) / 10);
 		this.pageArr = [];
 		for(let i = 1; i <= this.maxPage; i++) {

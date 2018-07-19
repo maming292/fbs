@@ -17,7 +17,7 @@ export class DetailComponent implements OnInit {
 	all: any;
 	constructor(private ActivatedRoute: ActivatedRoute) {}
 	ngOnInit() {
-  var val = this.ActivatedRoute.queryParams.value;
+  var val = this.ActivatedRoute.queryParams['value'];
   this.now = parseInt(val.now);
   this.all = parseInt(val.all);
 		this.cars = [{
@@ -63,9 +63,9 @@ export class DetailComponent implements OnInit {
 		];
 		this.charts()
 	}
-	onChange(e1) {
-		console.log(e1);
-	}
+//	onChange(e1) {
+//		console.log(e1);
+//	}
 	charts() {
 		let data1 = ['4800', '4300', '4100', '4000', '2400', '5000', '4700', '3000', '2000', '1800', '2800', '3000', '3500'];
 		let data2 = ['4000', '2500', '3400', '3200', '1800', '1500', '45', '1200', '1800', '2000', '2300', '1600', '2600', '1000'];

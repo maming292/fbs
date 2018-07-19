@@ -18,23 +18,24 @@ export class UserComponent implements OnInit {
 	page: number = 1;
 	maxPage: number = 1;
 	pageArr: any;
-	role_name: any = -1;
+
 	roles_add: any;
 	user_name: any; //新增
 	password: any;
 	real_name: any;
+	role_name: any = -1;
 	user_s: any;
 	delUserId: any;
-	
-	username_com:any;// 编辑
-	password_com:any;
-	realname_com:any;
+
+	username_com: any; // 编辑
+	password_com: any;
+	realname_com: any;
 	rolename_com: any;
-	id_com:any;
+	id_com: any;
 
 	showcompile: any; // 控制编辑框的显示隐藏
 	rolenameara: any; // 角色 和其ID对照表
-	
+
 	constructor(private route: Router, private serve: IndexService, private http: HttpClient, private service: PublicService) {}
 	headers = new HttpHeaders().set("Accept", "*/*");
 	options = {
@@ -54,7 +55,7 @@ export class UserComponent implements OnInit {
 		}
 	}
 	// 编辑回显
-	compile(username_com, realname_com, rolename_com,id_com,password_com) {
+	compile(username_com, realname_com, rolename_com, id_com, password_com) {
 		this.username_com = username_com;
 		this.realname_com = realname_com;
 		this.password_com = password_com;
@@ -68,17 +69,18 @@ export class UserComponent implements OnInit {
 	}
 	savecompile() {
 		let regExp=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,21}$/;
+		
 		if(!this.username_com) {
 			swal("请填写用户名！");
 			return;
 		}
-		if(!this.password_com) {
-			swal("请填写密码！");
-			return;
-		} else if(!regExp.test(this.password_com)){
-			swal("请输入6-21位数字和字母组合！");
-			return;
-		}
+//		if(!this.password_com) {
+//			swal("请填写密码！");
+//			return;
+//		} else if(!regExp.test(this.password_com)) {
+//			swal("请输入6-21位数字和字母组合！");
+//			return;
+//		}
 		if(!this.realname_com) {
 			swal("请输入真实姓名！");
 			return;
@@ -87,9 +89,8 @@ export class UserComponent implements OnInit {
 			swal("请选择角色！");
 			return;
 		}
-		
-	
-		let info = new HttpParams().set('NAME', this.realname_com).set('PASSWORD', this.password_com).set('ROLE_ID',this.rolename_com).set('ID', this.id_com);
+
+		let info = new HttpParams().set('NAME', this.realname_com).set('PASSWORD', this.password_com).set('ROLE_ID', this.rolename_com).set('ID', this.id_com);
 		this.http.post(`${this.service.path}/fbs/system/updateUser`, info, this.options).toPromise().then(function() {
 			this.msglist = [];
 			this.getdata();
@@ -99,11 +100,14 @@ export class UserComponent implements OnInit {
 
 	shows() {
 		this.alertshow = true;
-		console.log(this.alertshow)
 	}
 	hiddens() {
 		this.alertshow = false;
-		console.log(this.alertshow)
+
+		this.user_name = '';
+		this.password = '';
+		this.real_name = '';
+		this.role_name = -1;
 	}
 	prev() {
 		if(this.page > 1) {
@@ -134,7 +138,7 @@ export class UserComponent implements OnInit {
 				console.log(data)
 				this.roles_add = data['roles'];
 				this.rolenameara = {};
-				for(let i = 0;i<this.roles_add.length;i++){
+				for(let i = 0; i < this.roles_add.length; i++) {
 					this.rolenameara[this.roles_add[i].ROLE_NAME] = this.roles_add[i]['ID']
 				}
 				console.log(this.rolenameara)
@@ -142,7 +146,7 @@ export class UserComponent implements OnInit {
 					var arr = [data['result'][m]['USERNAME'], data['result'][m]['NAME'], data['result'][m]['ROLE_NAME'], data['result'][m]['LOG_TIME'], data['result'][m]['ID'], data['result'][m]['PASSWORD']]
 					msg.push(arr)
 				}
-//				console.log(msg)
+				//				console.log(msg)
 				this.pageArr = [];
 				this.maxPage = Math.ceil((msg.length) / 10);
 				for(let i = 1; i <= this.maxPage; i++) {
@@ -153,7 +157,7 @@ export class UserComponent implements OnInit {
 	}
 
 	save() {
-		let regExp=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,21}$/;
+		let regExp = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;
 		if(!this.user_name) {
 			swal("请填写用户名！");
 			return;
@@ -161,7 +165,7 @@ export class UserComponent implements OnInit {
 		if(!this.password) {
 			swal("请填写密码！");
 			return;
-		} else if(!regExp.test(this.password_com)){
+		} else if(!regExp.test(this.password)) {
 			swal("请输入6-21位数字和字母组合！");
 			return;
 		}
@@ -179,6 +183,10 @@ export class UserComponent implements OnInit {
 			this.getdata();
 		}.bind(this));
 		this.alertshow = false;
+			this.user_name = '';
+		this.password = '';
+		this.real_name = '';
+		this.role_name = -1;
 	}
 	setuserId(delUserId) {
 		this.delUserId = delUserId;

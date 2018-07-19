@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import 'rxjs/add/operator/filter';
 import {PublicService} from '../../services/public.service';
-
+import * as $ from "jquery";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
   flag: boolean = false;
   menu: any;
   sid: any;
-
+	year:any;
+	
   constructor(private router: Router) {
     this.router.events
       .filter((event) => event instanceof NavigationEnd)
@@ -34,6 +35,29 @@ export class HomeComponent implements OnInit {
         else if (url == '/home/runing') {
           this.ech(list,list[4]);
         }
+          else if (url == '/home/datadisplay') {
+          this.ech(list,list[4]);
+        }
+            else if (url == '/home/tablestatc') {
+          this.ech(list,list[4]);
+        }
+         else if (url == '/home/setting') {
+          this.ech(list,list[5]);
+        }
+          else if (url == '/home/setting/station') {
+          this.ech(list,list[5]);
+        } else if (url == '/home/setting/equipment') {
+          this.ech(list,list[5]);
+        }
+         else if (url == '/home/setting/area') {
+          this.ech(list,list[5]);
+        }
+          else if (url == '/home/setting/user') {
+          this.ech(list,list[5]);
+        }
+           else if (url == '/home/setting/role') {
+          this.ech(list,list[5]);
+        }
       });
   }
   ech(list,item){
@@ -43,10 +67,13 @@ export class HomeComponent implements OnInit {
         vthis.addClass(list[i],'acti');
       }else{
         vthis.removeClass(list[i],'acti');
+        
       }
     }
   }
   ngOnInit() {
+  	var date = new Date();
+  	this.year = date.getFullYear();
 
   }
 

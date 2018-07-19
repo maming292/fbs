@@ -114,7 +114,8 @@
 	border: 1px solid #DCDCDC;
 	margin-bottom: 15px;
 }
-.ct_list .title{
+
+.ct_list .title {
 	display: flex;
 	justify-content: space-between;
 }
@@ -191,67 +192,104 @@
 	background: #fff;
 	position: relative;
 }
-.middles{
+
+.middles {
 	display: inline-block;
 	height: 100%;
 	vertical-align: middle;
 }
-#ec{
+
+#ec {
 	width: 580px;
 	height: 400px;
 }
-.closes{
+
+.closes {
 	position: absolute;
-    font-size: 21px;
-    font-weight: 700;
-    top: 0;
-    right: 0;
-    color: #666;
-    padding: 10px;
-    z-index: 100;
+	font-size: 21px;
+	font-weight: 700;
+	top: 0;
+	right: 0;
+	color: #666;
+	padding: 10px;
+	z-index: 100;
 }
-.listshow{
+
+.listshow {
 	height: 540px;
 	overflow: scroll;
 }
-.listshow table{
+
+.listshow table {
 	text-align: center;
 }
-.listshow table th,.listshow table td{
+
+.listshow table th,
+.listshow table td {
 	padding: 5px 0;
 }
-.ct_list{
+
+.ct_list {
 	/*height: 200px;*/
 }
-.listshow .title{
-	margin:0 ;
+
+.listshow .title {
+	margin: 0;
 }
-.listshow .title span{
+
+.listshow .title span {
 	height: 30px;
 	line-height: 30px;
 }
-.backMap{
-	width: 60px;
-	height: 60px;
-	line-height: 58px;
-	border: 1px solid #333;
+
+.backMap {
 	position: fixed;
 	top: 80px;
 	left: 50px;
 	z-index: 1000;
 	text-align: center;
 }
-.detail th,.detail td{
+
+.detail th,
+.detail td {
 	font-size: 14px;
 	color: #666;
 	font-weight: 400;
 	text-align: center;
 }
-.showLine{
+
+.showLine {
 	display: inline-block;
 	padding: 5px 10px;
 	border: 1px solid #01BEA4;
 	border-radius: 5px;
 	margin-top: 10px;
 	color: #01BEA4;
+}
+
+.nl2 {
+	position: relative;
+	display: inline-block;
+	margin-right: 440px;
+}
+
+.nl2>img {
+	width: 100%;
+	/*margin-top: -130px;*/
+}
+
+.model {
+	position: absolute;
+    width: 124px;
+    height: 70px;
+    top: 22%;
+    right: 6%;
+}
+
+.backMap {
+	position: fixed;
+	top: 80px;
+	left: 50px;
+	z-index: 1000;
+	text-align: center;
 }

@@ -117,11 +117,12 @@ export class RuningComponent implements OnInit {
     	console.log(data)
     	
       if(data['code']==200){
-      	this.companyId = data['result']['0']['ID']
-      	
+//    	this.companyId = data['result']['0']['ID']
+      	this.companyId = 141;
       	
         this.mapCompany=data['result'];
-        this.Run(data['result']['0']['ID'])
+//      this.Run(data['result']['0']['ID'])
+this.Run(141)
       }else{
         swal(`${data['code']}`);
       }
@@ -145,7 +146,9 @@ export class RuningComponent implements OnInit {
   todis() {
   	this.route.navigateByUrl('/home/datadisplay');
   }
-
+  tables() {
+  	this.route.navigateByUrl('/home/tablestatc');
+  }
 }
 class electricModule{
   public all:string //总电量

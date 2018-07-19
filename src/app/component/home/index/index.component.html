@@ -1,5 +1,5 @@
 <div class="body" style="position: relative">
-  <aside class="main-sidebar pull-right" style="padding-top: 0;min-width:440px;right:0!important;left: inherit;background-color: rgb(236, 240, 245);">
+  <aside class="main-sidebar pull-right" style="padding-top: 0;min-width:500px;right:0!important;left: inherit;background-color: rgb(236, 240, 245);">
     <div class="contentd">
       <div class="right">
         <div class="r_top">
@@ -33,7 +33,7 @@
             <div class="col-sm-4"  >
               <select class="form-control" [(ngModel)] = 'standtype'>
               	<option value="">电站类型</option>
-                <option *ngFor="let item of sectype" [value]='item.STAND_TYPE'>{{item.STAND_TYPE}}</option>
+                <option *ngFor="let item of sectype" [value]='item'>{{item}}</option>
               </select>
             </div>
             <div class="input-group input-group-sm col-sm-4 " >
@@ -42,19 +42,31 @@
                       <button type="button" class="btn btn-info btn-flat" (click)='get()'>搜</button>
                     </span>
             </div>
-          </div>																																						//状态 type  规模		//当日 累计	
+          </div>	
+          
+          <div style="overflow: scroll;height: 65vh;">
           <div class="ct_list" *ngFor="let item of list;let i=index" style="cursor: pointer"  (click)="onClick(item.DAY_EQ,item.SUM_EQ)"  >
             <p  style="padding: 10px;height: 40px;line-height: 20px;" >
-              <span class="toogle">{{i+1}}、{{item.COMPANY_NAME}}</span>
-              <span class="pull-right" style="width: 60px;" *ngIf="map[item.ID]==0">
-                 <img src="../../../../assets/img/u361.png" alt=""><span>离线</span>
-              </span>
-              <span class="pull-right" style="width: 60px;" *ngIf="map[item.ID]==1">
+              <span class="toogle">{{i+1}}、{{item.FACILITY_NAME}}</span>
+              <span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==1">
                  <img src="../../../../assets/img/u228.png" alt=""><span>正常</span>
               </span>
-              <span class="pull-right" style="width: 60px;" *ngIf="map[item.ID]==2">
+              <span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==2">
                  <img src="../../../../assets/img/u285.png" alt=""><span style="color: red;">异常</span>
               </span>
+              
+              <!-- 在线/离线  -->
+               <span class="pull-right" style="width: 60px;" *ngIf="item.TYPE!=0">
+                 <img src="../../../../assets/img/u228.png" alt=""><span>在线</span>
+              </span>
+               <!--<span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==2">
+                 <img src="../../../../assets/img/u228.png" alt=""><span>在线</span>
+              </span>-->
+             <span class="pull-right" style="width: 60px;" *ngIf="item.TYPE==0">
+                 <img src="../../../../assets/img/u361.png" alt=""><span>离线</span>
+              </span>
+              
+              <!-- 在线/离线  以上  -->
             </p>
             <div class="row rows" id="crow" style="height: 72px;padding: 0 10px;margin: 0">
               <div class="col-md-2">
@@ -66,15 +78,15 @@
               </div>
               <div class="col-md-2" [title]="item.SUN_MJ_DAY">
                 <p class="bl">{{item.SUN_MJ_DAY|fixedNumber}}</p>
-                <p>预测(度)</p>
+                <p>预测日电量(度)</p>
               </div>
               <div class="col-md-2" [title]="item.DAY_EQ">
                 <p class="bl">{{item.DAY_EQ|fixedNumber}}</p>
-                <p>当日(度)</p>
+                <p>当日日电量(度)</p>
               </div>
               <div class="col-md-2" [title]="item.SUM_EQ">
                 <p class="bl">{{item.SUM_EQ|fixedNumber}}</p>
-                <p>累计(度)</p>
+                <p>累计总电量(度)</p>
               </div>
               <div class="col-md-2" style="float: right;width: 13%!important;">
                 <span class="btn btn-block btn-info btn-sm" style="height: 50px;line-height: 42px;font-size: 15px;">65%</span>
@@ -101,11 +113,14 @@
               </div>
             </div>
           </div>
+          
+          </div>
+          
         </div>
       </div>
     </div>
   </aside>
-  <div class="backMap" (click)="backLineMap()">路线图</div>
+  <div class="backMap" (click)="backLineMap()"> <img src="../../../assets/img/linemap.png" alt=""></div>
   <div id="wrapper">
     <div class="content-wrapper"  style="min-height: 90vh;margin: 0 440px 0 0" id="map">
       <!-- Content Header (Page header) -->

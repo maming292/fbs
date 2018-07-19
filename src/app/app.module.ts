@@ -31,6 +31,8 @@ import { EquipmentComponent } from './component/home/setting/equipment/equipment
 import { UserComponent } from './component/home/setting/user/user.component';
 import { RoleComponent } from './component/home/setting/role/role.component';
 import { AreaComponent } from './component/home/setting/area/area.component';
+import { TablestatcComponent } from './component/home/tablestatc/tablestatc.component';
+import { Newline2Component } from './component/home/newline2/newline2.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { AreaComponent } from './component/home/setting/area/area.component';
     EquipmentComponent,
     UserComponent,
     RoleComponent,
-    AreaComponent
+    AreaComponent,
+    TablestatcComponent,
+    Newline2Component
   ],
   imports: [
     BrowserModule,
